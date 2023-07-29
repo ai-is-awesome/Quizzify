@@ -10,6 +10,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { backIn } from "framer-motion";
+import Navbar from "./Components/Navbar";
 
 const colors = ["#374259", "#116A7B", "#F5EAEA"];
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
@@ -58,23 +59,9 @@ function App() {
       width={"100vw"}
       color="white"
     >
-      <Box width={"60%"} margin={"auto"} padding="4rem">
-        <Box display={"flex"} gap="8" mb={"12"}>
-          <Button bg={"green.400"} color={"white"}>
-            Learn Language
-          </Button>
-          <Button background={"orange.400"} color={"white"}>
-            Review your Progress
-          </Button>
-          <Button color={"white"} bg={"red.400"}>
-            View Statistics
-          </Button>
-          <Button background={"magenta"} color={"white"}>
-            Improve mistakes
-          </Button>
-        </Box>
-        <Dashboard quizzes={state.quizzes} />
-      </Box>
+      <Navbar />
+      <Dashboard quizzes={state.quizzes} />
+      <Box width={"60%"} margin={"auto"} padding="4rem"></Box>
     </Box>
   );
 }

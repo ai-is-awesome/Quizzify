@@ -13,29 +13,52 @@ import useQuiz from "../../hooks/useQuiz";
 
 export default function QuizMaster(props) {
   let { quizId } = useParams();
-  const [quizData, setQuizData] = useState({});
-  const { currentQuestionIdx, proceedToNextQuestion } = useQuiz(quizData);
+  const [quizData, setQuizData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const {
+    currentQuestionIdx,
+    proceedToNextQuestion,
+    isLastQuestion,
+    questions,
+  } = useQuiz(quizData);
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const questions = quizData.questions;
-  console.log("QUESTIONS ARE ", questions);
-  const totalQuestions = questions ? questions.length : 0;
   useEffect(() => {
-    getQuizById(quizId).then((data) => {
-      setQuizData(data.data);
-    });
+    getQuizById(quizId)
+      .then((data) => {
+        setQuizData(data.data);
+      })
+      .finally(() => setLoading(false));
   }, [quizId]);
 
+  const submitQuiz = () => {};
+
+  const btnJSX = !isLastQuestion() ? (
+    <Button position={"absolute"} bottom="8" onClick={proceedToNextQuestion}>
+      Next Question
+    </Button>
+  ) : (
+    <Button
+      bg="green.500"
+      color={"white"}
+      position={"absolute"}
+      bottom="8"
+      _hover={{ bg: "green.300" }}
+    >
+      Submit Quiz
+    </Button>
+  );
+
+  if (loading) {
+    return <>Loading</>;
+  }
   return (
     <Layout>
       <Container>
         <CustomBox minH="40vh" position="relative">
-          {questions && (
-            <QuestionMaster questionObject={questions[currentQuestion]} />
+          {questions.length !== 0 && (
+            <QuestionMaster questionObject={questions[currentQuestionIdx]} />
           )}
-          <Button position={"absolute"} bottom="8">
-            Next Question
-          </Button>
+          {btnJSX}
         </CustomBox>
         ;
       </Container>

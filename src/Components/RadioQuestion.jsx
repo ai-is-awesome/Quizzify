@@ -11,11 +11,10 @@ export default function RadioQuestion({
   currentQuestionIdx,
   TotalQuestion,
 }) {
-  console.log("radio render", choices);
   return (
     <>
       <Heading size="md" mb="4">
-        <chakra.p fontSize={"lg"}>What is the meaning of "WHFOEH"</chakra.p>
+        <chakra.p fontSize={"lg"}>{questionText}</chakra.p>
         <RadioInput choices={choices} mt="8" />
       </Heading>
     </>
