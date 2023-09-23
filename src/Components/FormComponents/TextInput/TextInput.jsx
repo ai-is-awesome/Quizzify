@@ -6,7 +6,7 @@ export default function TextInput({ props }) {
     <>
       <Input
         placeholder="Basic usage"
-        padding={"2rem"}
+        padding={"1rem"}
         border="0px"
         borderBottom={"2px white solid"}
         color={"white"}

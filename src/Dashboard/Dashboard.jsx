@@ -1,10 +1,21 @@
-import { Box, Button, Grid, Heading, Image, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Grid,
+  Heading,
+  Image,
+  Input,
+  Spinner,
+} from "@chakra-ui/react";
 import QuizDashboardItem from "../Components/QuizDashboardItem/QuizDashboardItem";
 import TextToSpeech from "../Components/Speech";
 import useRequest from "../hooks/useRequest";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TransparentBox from "../Components/TransparentBox";
+import CustomButton from "../Components/UI/CustomButton";
+import CardMatch from "../Components/CardMatch/CardMatch";
+import RandomWord from "../Components/RandomWord";
 
 export default function Dashboard({ quizzes }) {
   const [text, setText] = useState(
@@ -19,7 +30,6 @@ export default function Dashboard({ quizzes }) {
 
   return (
     <Box>
-      {quizzes.status === "loading" && <p>LOADINGp</p>}
       {/* Upper section */}
       <Grid minH={"100vh"} templateColumns={"repeat(2, 1fr)"} px="20">
         <Image
@@ -41,12 +51,14 @@ export default function Dashboard({ quizzes }) {
             A new platform for learning language quickly. Learn and improve at
             any time of the time at your convinience
           </Box>
+
           <Button bg="green.500" color={"white"}>
             Explore the App now!
           </Button>
         </Box>
       </Grid>
 
+      {/* Lower section */}
       <Box width={"60%"} margin={"auto"} padding="4rem">
         <Box display={"flex"} gap="8" mb={"12"} mt="8">
           <Button bg={"green.400"} color={"white"}>
@@ -99,7 +111,37 @@ export default function Dashboard({ quizzes }) {
             {error && error}
           </Box>
         </TransparentBox>
-        <TransparentBox headingText={"Select the quiz"}>
+        <TransparentBox headingText={"Card Match Game"}>
+          <Image
+            src="https://upload.wikimedia.org/wikipedia/commons/4/4d/WMCZ_Protected_Areas_Card_Game-7_%28cropped%29.jpg"
+            h="200px"
+            w="100%"
+            objectFit={"cover"}
+          />
+          <Heading fontSize={"1.5rem"} textAlign={"center"}>
+            Take a rest from learning and play a card match game
+          </Heading>
+          <Heading
+            fontSize={"1rem"}
+            textAlign={"center"}
+            mt="1rem"
+            fontWeight={"medium"}
+          >
+            Don't worry the results are not evaluated!
+          </Heading>
+          <Box
+            my="12"
+            display={"flex"}
+            justifyContent={"center"}
+            flexDirection={"column"}
+          >
+            <CardMatch mode="screened" />
+            <CustomButton variant={"primary"} href="/cardmatch">
+              Click here to play the Game in full screen
+            </CustomButton>
+          </Box>
+        </TransparentBox>
+        <TransparentBox headingText={"Your Language Packs"}>
           <Image
             src="https://unsplash.com/photos/HH4WBGNyltc/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8Ym9va3xlbnwwfHx8fDE2OTA1NDcwNDd8MA&force=true&w=2400"
             h="200px"
@@ -107,6 +149,11 @@ export default function Dashboard({ quizzes }) {
             objectFit={"cover"}
           />
           <Box bg={""}>
+            {quizzes.status === "loading" && (
+              <Box display={"flex"} justifyContent={"center"} my="4">
+                <Spinner />
+              </Box>
+            )}
             {quizzes.data &&
               quizzes.data.map((quiz) => (
                 <QuizDashboardItem key={quiz._id} data={quiz} />
@@ -114,10 +161,18 @@ export default function Dashboard({ quizzes }) {
           </Box>
         </TransparentBox>
         <TransparentBox
-          headingText={"HELLO THERE"}
-          headingProps={{ textAlign: "center" }}
+          headingText={"Word of the day"}
+          headingProps={{
+            textAlign: "center",
+          }}
+          boxProps={{
+            _hover: {
+              cursor: "pointer",
+              transform: "scale(1.2)",
+            },
+          }}
         >
-          LMAO
+          <RandomWord />
         </TransparentBox>
       </Box>
     </Box>

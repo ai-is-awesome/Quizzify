@@ -7,7 +7,6 @@ export default function useQuiz(quizData) {
     setCurrentQuestionIdx((prev) => prev + 1);
   };
 
-  console.log("quiz data: ", quizData);
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {

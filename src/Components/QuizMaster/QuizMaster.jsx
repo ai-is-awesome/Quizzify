@@ -1,4 +1,12 @@
-import { Box, Button, Heading, Stack, chakra } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Link,
+  Stack,
+  Text,
+  chakra,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import CustomBox from "../CustomBox";
 import { Radio, RadioGroup } from "@chakra-ui/react";
@@ -15,6 +23,7 @@ export default function QuizMaster(props) {
   let { quizId } = useParams();
   const [quizData, setQuizData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [submit, setSubmit] = useState(false);
   const {
     currentQuestionIdx,
     proceedToNextQuestion,
@@ -43,6 +52,7 @@ export default function QuizMaster(props) {
       position={"absolute"}
       bottom="8"
       _hover={{ bg: "green.300" }}
+      onClick={() => setSubmit(true)}
     >
       Submit Quiz
     </Button>
@@ -58,9 +68,13 @@ export default function QuizMaster(props) {
           {questions.length !== 0 && (
             <QuestionMaster questionObject={questions[currentQuestionIdx]} />
           )}
-          {btnJSX}
+          {!submit && btnJSX}
+          {submit && (
+            <Link color={"green.500"} href="/user">
+              Quiz Submitted click here to go to home
+            </Link>
+          )}
         </CustomBox>
-        ;
       </Container>
     </Layout>
   );

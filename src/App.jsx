@@ -15,9 +15,10 @@ import Navbar from "./Components/Navbar";
 const colors = ["#374259", "#116A7B", "#F5EAEA"];
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
 
-function App() {
+function App({ user }) {
   const initialState = {
     quizzes: { status: "loading", data: [] },
+    user: user,
   };
 
   const [state, setState] = useState(() => initialState);
@@ -59,8 +60,8 @@ function App() {
       width={"100vw"}
       color="white"
     >
-      <Navbar />
-      <Dashboard quizzes={state.quizzes} />
+      <Navbar user={user} />
+      <Dashboard quizzes={state.quizzes} user={initialState.user} />
       <Box width={"60%"} margin={"auto"} padding="4rem"></Box>
     </Box>
   );
