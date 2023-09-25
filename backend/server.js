@@ -40,7 +40,18 @@ const apiLimiter = rateLimit({
 app.use("/translate", apiLimiter);
 
 app.get("/status", async (req, res) => {
-  return res.json({ Status: "Service is running" });
+  const state = mongoose.connection.readyState;
+  let state_string = "";
+  if (state === 0) {
+    state_string = "Disconnected";
+  } else if (state === 1) {
+    state_string = "Connected";
+  } else if (state === 2) {
+    state_string = "Connecting";
+  } else {
+    state_string = "Disconnecting";
+  }
+  return res.json({ Status: "Service is running", DB_state: state_string });
 });
 
 app.post("/add_quiz", async (req, res) => {
