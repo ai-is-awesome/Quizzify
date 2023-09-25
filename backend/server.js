@@ -39,6 +39,10 @@ const apiLimiter = rateLimit({
 
 app.use("/translate", apiLimiter);
 
+app.get("/status", async (req, res) => {
+  return res.json({ Status: "Service is running" });
+});
+
 app.post("/add_quiz", async (req, res) => {
   console.log(req.body);
   try {
