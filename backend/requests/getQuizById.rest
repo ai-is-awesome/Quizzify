@@ -1,0 +1,7 @@
+POST http://localhost:3001/get_quiz_by_id HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "quizId" : "64c04fd0ac8cac778efd4110"
+}

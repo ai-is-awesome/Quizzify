@@ -1,0 +1,8 @@
+POST http://localhost:3001/translate HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "text" : "Testing rate limiting in our current system!"
+}
+

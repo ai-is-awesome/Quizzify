@@ -1,0 +1,11 @@
+POST http://localhost:3001/add_question_to_quiz HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "quizId" : "64c04fd0ac8cac778efd4110",
+    "questionText" : "Choose correct word for Cycle",
+    "questionType" : "radio",
+    "choices" : [{"choiceText" : "cykle"}, {"choiceText" : "Fidke"}],
+    "correctChoiceText" : "cykle"
+}
