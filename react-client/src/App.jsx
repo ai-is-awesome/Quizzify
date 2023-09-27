@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { backIn } from "framer-motion";
 import Navbar from "./Components/Navbar";
+import { BASE_URL } from "./services";
 
 const colors = ["#374259", "#116A7B", "#F5EAEA"];
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
@@ -24,7 +25,7 @@ function App({ user }) {
   const [state, setState] = useState(() => initialState);
 
   useEffect(() => {
-    const url = "http://localhost:3001/get_all_quiz";
+    const url = `${BASE_URL}get_all_quiz`;
     axios.get(url).then((resp) =>
       setState((initial) => {
         return { ...initial, quizzes: { status: "loaded", data: resp.data } };

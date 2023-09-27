@@ -16,6 +16,7 @@ import TransparentBox from "../Components/TransparentBox";
 import CustomButton from "../Components/UI/CustomButton";
 import CardMatch from "../Components/CardMatch/CardMatch";
 import RandomWord from "../Components/RandomWord";
+import { TRANSLATION_API_URL } from "../services";
 
 export default function Dashboard({ quizzes }) {
   const [text, setText] = useState(
@@ -23,7 +24,7 @@ export default function Dashboard({ quizzes }) {
   );
 
   const { fetch, loading, data, error } = useRequest(() =>
-    axios.post("http://localhost:3001/translate", {
+    axios.post(TRANSLATION_API_URL, {
       text: text,
     })
   );

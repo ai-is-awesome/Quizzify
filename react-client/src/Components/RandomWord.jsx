@@ -2,11 +2,12 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import useRequest from "../hooks/useRequest";
 import axios from "axios";
+import { RANDOM_WORD_API_URL } from "../services";
 
 export default function RandomWord() {
   const [flipped, setFlipped] = useState(false);
   const { data, loading, error, fetch } = useRequest(() =>
-    axios.post("http://localhost:3001/get_random_word_of_the_day")
+    axios.post(RANDOM_WORD_API_URL)
   );
 
   const word = data?.data?.word;

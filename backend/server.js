@@ -11,7 +11,6 @@ import { rateLimit } from "express-rate-limit";
 import Word from "./models/Word.js";
 
 const app = express();
-
 app.use(express.json());
 
 app.use(cors());
