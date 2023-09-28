@@ -58,7 +58,7 @@ function App({ user }) {
     <Box
       backgroundColor={colors[1]}
       minHeight={"100vh"}
-      width={"100vw"}
+      minWidth={"100vw"}
       color="white"
     >
       <Navbar user={user} />

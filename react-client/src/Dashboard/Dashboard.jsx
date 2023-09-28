@@ -32,7 +32,11 @@ export default function Dashboard({ quizzes }) {
   return (
     <Box>
       {/* Upper section */}
-      <Grid minH={"100vh"} templateColumns={"repeat(2, 1fr)"} px="20">
+      <Grid
+        minH={"100vh"}
+        templateColumns={{ lg: "repeat(2, 1fr)", sm: "repeat(1, 1fr)" }}
+        px={{ sm: "4", lg: "20" }}
+      >
         <Image
           src="https://unsplash.com/photos/ORDz1m1-q0I/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjkwNjI2ODA5fA&force=true&w=2400"
           rounded={"2xl"}

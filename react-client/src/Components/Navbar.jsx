@@ -4,6 +4,7 @@ import { CgProfile } from "react-icons/cg";
 
 export default function Navbar({ user }) {
   console.log(user);
+
   const jsx =
     user.status === "logout" ? (
       <Box display={"flex"} alignItems={"center"} gap="4">
@@ -22,7 +23,11 @@ export default function Navbar({ user }) {
     );
   return (
     <>
-      <HStack p={"20"} justifyContent={"space-between"}>
+      <HStack
+        px={{ lg: "20", sm: "4" }}
+        py={{ lg: "20", sm: "2" }}
+        justifyContent={"space-between"}
+      >
         <Link
           fontSize={"4xl"}
           letterSpacing={"tighter"}
