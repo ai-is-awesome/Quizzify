@@ -44,12 +44,16 @@ export default function Dashboard({ quizzes }) {
         <Box
           mb="8"
           display={"flex"}
-          justifyContent={"center"}
           flexDirection={"column"}
+          justifyContent={{ lg: "center" }}
           alignItems={"center"}
-          h={"80vh"}
+          h={{ lg: "80vh" }}
         >
-          <Heading my="8" fontSize={"5xl"}>
+          <Heading
+            my={{ lg: "8", sm: "4" }}
+            textAlign={{ sm: "center" }}
+            fontSize={"5xl"}
+          >
             Welcome to Fluentify!
           </Heading>
           <Box fontSize={"lg"} mx={"auto"} width={"75%"} mb="8">
@@ -64,8 +68,19 @@ export default function Dashboard({ quizzes }) {
       </Grid>
 
       {/* Lower section */}
-      <Box width={"60%"} margin={"auto"} padding="4rem">
-        <Box display={"flex"} gap="8" mb={"12"} mt="8">
+      {/* Buttons Box */}
+      <Box
+        width={{ lg: "60%", sm: "100%" }}
+        margin={{ lg: "auto" }}
+        padding={{ lg: "4rem" }}
+      >
+        <Box
+          display={"flex"}
+          gap={{ lg: "8" }}
+          mb={"12"}
+          mt="8"
+          flexWrap={{ sm: "wrap" }}
+        >
           <Button bg={"green.400"} color={"white"}>
             Learn Language
           </Button>
@@ -79,6 +94,8 @@ export default function Dashboard({ quizzes }) {
             Improve mistakes
           </Button>
         </Box>
+
+        {/* Transparent Box */}
 
         <TransparentBox headingText={"Translate on the Go!"}>
           <Image
