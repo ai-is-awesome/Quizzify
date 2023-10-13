@@ -4,8 +4,9 @@ Accept: application/json
 
 {
     "quizId" : "64c04fd0ac8cac778efd4110",
-    "questionText" : "Choose correct word for Cycle",
+    "questionText" : "What is the meaning of phrase 'How are you?'",
     "questionType" : "radio",
-    "choices" : [{"choiceText" : "cykle"}, {"choiceText" : "Fidke"}],
-    "correctChoiceText" : "cykle"
+    "choices" : [{"choiceText" : "comment vas-tu ?"}, {"choiceText" : "qui es-tu"}, {"choiceText" : "toi"}],
+    "correctChoiceText" : "comment vas-tu ?"
 }
+

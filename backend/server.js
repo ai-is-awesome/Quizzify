@@ -145,7 +145,7 @@ app.post("/add_question_to_quiz", async (req, res) => {
     return res.json(questionDoc);
   } catch (e) {
     console.log(e);
-    return res.json({ error: "An error is encountered" });
+    return res.json({ error: "An error is encountered", e });
   }
 });
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function useRequest(executor) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 

@@ -12,6 +12,7 @@ import axios from "axios";
 import { backIn } from "framer-motion";
 import Navbar from "./Components/Navbar";
 import { BASE_URL } from "./services";
+import { getThemeObject } from "../theme";
 
 const colors = ["#374259", "#116A7B", "#F5EAEA"];
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
@@ -20,6 +21,7 @@ function App({ user }) {
   const initialState = {
     quizzes: { status: "loading", data: [] },
     user: user,
+    themeName: "white",
   };
 
   const [state, setState] = useState(() => initialState);
@@ -32,6 +34,8 @@ function App({ user }) {
       })
     );
   }, []);
+
+  const themeObject = getThemeObject(state.themeName);
 
   const jsx1 = (
     <>
@@ -56,10 +60,10 @@ function App({ user }) {
 
   return (
     <Box
-      backgroundColor={colors[1]}
+      backgroundColor={themeObject.bgColorPrimary}
       minHeight={"100vh"}
       minWidth={"100vw"}
-      color="white"
+      color={themeObject.textColorMain}
     >
       <Navbar user={user} />
       <Dashboard quizzes={state.quizzes} user={initialState.user} />

@@ -1,7 +1,12 @@
-import { Button, Link } from "@chakra-ui/react";
+import { Button, Link, Spinner } from "@chakra-ui/react";
 import myTheme from "../../../theme";
 
-export default function CustomButton({ variant, children, ...restOfTheProps }) {
+export default function CustomButton({
+  variant,
+  children,
+  loading,
+  ...restOfTheProps
+}) {
   const variants = {
     primary: {
       backgroundColor: myTheme.primaryColor,
@@ -20,7 +25,7 @@ export default function CustomButton({ variant, children, ...restOfTheProps }) {
       backgroundColor={myTheme.primaryColor}
       color={"white"}
     >
-      {children}
+      {loading ? <Spinner /> : children}
     </Button>
   );
 }

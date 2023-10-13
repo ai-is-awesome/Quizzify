@@ -51,12 +51,19 @@ export default function Dashboard({ quizzes }) {
         >
           <Heading
             my={{ lg: "8", sm: "4" }}
-            textAlign={{ sm: "center" }}
+            textAlign={{ sm: "center", lg: "left" }}
+            color={{ lg: "blue.200" }}
             fontSize={"5xl"}
           >
-            Welcome to Fluentify!
+            Welcome to Fluentify
           </Heading>
-          <Box fontSize={"lg"} mx={"auto"} width={"75%"} mb="8">
+          <Box
+            fontSize={"lg"}
+            mx={"auto"}
+            width={"75%"}
+            mb="8"
+            textAlign={{ sm: "center" }}
+          >
             A new platform for learning language quickly. Learn and improve at
             any time of the time at your convinience
           </Box>
@@ -115,7 +122,9 @@ export default function Dashboard({ quizzes }) {
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
-            <Button onClick={fetch}>Translate</Button>
+            <CustomButton onClick={fetch}>
+              Translate {loading && "LOading"}
+            </CustomButton>
             <Box
               bg="gray.200"
               minH="10vh"
@@ -158,7 +167,7 @@ export default function Dashboard({ quizzes }) {
             flexDirection={"column"}
           >
             <CardMatch mode="screened" />
-            <CustomButton variant={"primary"} href="/cardmatch">
+            <CustomButton variant={"primary"} color="black" href="/cardmatch">
               Click here to play the Game in full screen
             </CustomButton>
           </Box>
