@@ -9,6 +9,7 @@ const myTheme = {
   },
   white: {
     bgColorPrimary: "#116A7B",
+    bgColorComplementary: "#DA25AC",
     bgColorCard: "gray.100",
     textColorMain: "white",
   },

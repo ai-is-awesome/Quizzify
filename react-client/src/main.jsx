@@ -5,9 +5,12 @@ import App from "./App.jsx";
 import "./index.css";
 import Quiz from "./Components/Quiz.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import CardMatch from "./Components/CardMatch/CardMatch.jsx";
-import Navbar from "./Components/Navbar.jsx";
+
 import Signup from "./Components/Signup.jsx";
+import AuthProvider from "./useAuth.jsx";
+import LandingPage from "./Components/LandingPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,7 @@ const router = createBrowserRouter([
     path: "/user",
     element: <App user={{ name: "Piyush Lamba", status: "loggedin" }} />,
   },
+  { path: "/landing", element: <LandingPage /> },
 ]);
 
 const breakpoints = {
@@ -40,10 +44,18 @@ const breakpoints = {
 };
 const theme = extendTheme({ breakpoints });
 
+export const Main = () => {
+  return (
+    <ChakraProvider theme={theme}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </ChakraProvider>
+  );
+};
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ChakraProvider>
+    <Main />
   </React.StrictMode>
 );
