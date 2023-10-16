@@ -13,8 +13,8 @@ export default function AuthProvider({ children }) {
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log("User Found");
-      setUserData({ ...userData, firebaseData: user });
+      console.log("User Found", user);
+      // setUserData({ ...userData, firebaseData: user });
     } else {
       setUserData(getLogoutUserObject());
     }
