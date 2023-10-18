@@ -1,6 +1,8 @@
 import { Box, Text, chakra } from "@chakra-ui/react";
+import { getThemeObject } from "../../../theme";
 
 export const LandingPageFeatureUI = ({ featureTitle, desc }) => {
+  const themeObj = getThemeObject("white");
   return (
     <Box
       display={"flex"}
@@ -15,6 +17,7 @@ export const LandingPageFeatureUI = ({ featureTitle, desc }) => {
         flexShrink={0} // Prevent the left section from shrinking
         flexBasis={"25%"}
         mr="4"
+        color={themeObj.bgColorComplementary}
       >
         {featureTitle}
       </Text>
@@ -23,4 +26,8 @@ export const LandingPageFeatureUI = ({ featureTitle, desc }) => {
       </chakra.span>
     </Box>
   );
+};
+
+export const LandingPageWrapper = ({ children }) => {
+  return <Box px={{ sm: "4", lg: "20" }}>{children}</Box>;
 };

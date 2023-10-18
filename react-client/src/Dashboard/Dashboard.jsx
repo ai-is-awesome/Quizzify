@@ -52,7 +52,6 @@ export default function Dashboard({ quizzes }) {
           <Heading
             my={{ lg: "8", sm: "4" }}
             textAlign={{ sm: "center", lg: "left" }}
-            color={{ lg: "blue.200" }}
             fontSize={"5xl"}
           >
             Welcome to Fluentify

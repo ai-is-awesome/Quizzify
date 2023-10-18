@@ -11,14 +11,17 @@ export default function AuthProvider({ children }) {
     serverUserData: {},
   });
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log("User Found", user);
-      // setUserData({ ...userData, firebaseData: user });
-    } else {
-      setUserData(getLogoutUserObject());
-    }
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("User Found", user);
+        setUserData({ ...userData, firebaseData: user });
+      } else {
+        console.log("NO user detected!");
+        setUserData(getLogoutUserObject());
+      }
+    });
+  }, [setUserData]);
 
   const authData = { isLoggedIn: false };
   const logout = () => {};
