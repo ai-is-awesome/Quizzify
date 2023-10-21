@@ -32,46 +32,6 @@ export default function Dashboard({ quizzes }) {
   return (
     <Box>
       {/* Upper section */}
-      <Grid
-        minH={"100vh"}
-        templateColumns={{ lg: "repeat(2, 1fr)", sm: "repeat(1, 1fr)" }}
-        px={{ sm: "4", lg: "20" }}
-      >
-        <Image
-          src="https://unsplash.com/photos/ORDz1m1-q0I/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjkwNjI2ODA5fA&force=true&w=2400"
-          rounded={"2xl"}
-        />
-        <Box
-          mb="8"
-          display={"flex"}
-          flexDirection={"column"}
-          justifyContent={{ lg: "center" }}
-          alignItems={"center"}
-          h={{ lg: "80vh" }}
-        >
-          <Heading
-            my={{ lg: "8", sm: "4" }}
-            textAlign={{ sm: "center", lg: "left" }}
-            fontSize={"5xl"}
-          >
-            Welcome to Fluentify
-          </Heading>
-          <Box
-            fontSize={"lg"}
-            mx={"auto"}
-            width={"75%"}
-            mb="8"
-            textAlign={{ sm: "center" }}
-          >
-            A new platform for learning language quickly. Learn and improve at
-            any time of the time at your convinience
-          </Box>
-
-          <Button bg="green.500" color={"white"}>
-            Explore the App now!
-          </Button>
-        </Box>
-      </Grid>
 
       {/* Lower section */}
       {/* Buttons Box */}

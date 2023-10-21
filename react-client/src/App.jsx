@@ -7,12 +7,14 @@ import Timeline from "./Components/Timeline/Timeline";
 import Radio from "./Components/Radio/RadioInput";
 import CardMatch from "./Components/CardMatch/CardMatch";
 import Dashboard from "./Dashboard/Dashboard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { backIn } from "framer-motion";
 import Navbar from "./Components/Navbar";
 import { BASE_URL } from "./services";
 import { getThemeObject } from "../theme";
+import { AuthContext } from "./useAuth";
+import { useNavigate } from "react-router-dom";
 
 const colors = ["#374259", "#116A7B", "#F5EAEA"];
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
@@ -24,6 +26,14 @@ function App({ user }) {
     themeName: "white",
   };
 
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate("/landing");
+
+  useEffect(() => {
+    if (!auth.isLoggedIn) {
+      navigate("/landing");
+    }
+  }, []);
   const [state, setState] = useState(() => initialState);
 
   useEffect(() => {

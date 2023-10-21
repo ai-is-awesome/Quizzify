@@ -83,14 +83,25 @@ export default function LandingPage() {
                 expedita eius, illum suscipit!"
               />
             </Box>
-            <Button
-              as={"a"}
-              href="#features"
-              bg={getThemeObject("white")["bgColorPrimary"]}
-              color={"white"}
-            >
-              Checkout the latest features
-            </Button>
+            {/* Button container */}
+            <Box display={"flex"} gap="4">
+              <Button
+                as={"a"}
+                href="#features"
+                bg={getThemeObject("white")["bgColorPrimary"]}
+                color={"white"}
+              >
+                Checkout the latest features
+              </Button>
+              <Button
+                as={"a"}
+                href="/signup"
+                bg={getThemeObject("white")["bgColorComplementary"]}
+                color={"white"}
+              >
+                Signup or Use as Guest
+              </Button>
+            </Box>
           </Box>
         </Grid>
         <Heading

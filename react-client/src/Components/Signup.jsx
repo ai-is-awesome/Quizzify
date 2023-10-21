@@ -14,6 +14,7 @@ import CustomBox from "./CustomBox";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import TextOnImage from "./TextOnImage";
 import myTheme from "../../theme";
+import { useState } from "react";
 
 export default function Signup() {
   return (
@@ -76,6 +77,10 @@ export default function Signup() {
                 </chakra.span>
               </Box>
             </Box>
+            <Box mb="2rem">
+              Email Address
+              <Input />
+            </Box>
             <Grid templateColumns={"repeat(2, 1fr)"} gap="2rem" mb="2rem">
               <Box>
                 First Name
@@ -85,6 +90,7 @@ export default function Signup() {
                 Last Name
                 <Input />
               </Box>
+
               <Box>
                 Password
                 <Input type="password" />

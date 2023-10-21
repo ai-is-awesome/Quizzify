@@ -23,11 +23,12 @@ export default function AuthProvider({ children }) {
     });
   }, [setUserData]);
 
-  const authData = { isLoggedIn: false };
   const logout = () => {};
 
   return (
-    <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ ...userData, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 
