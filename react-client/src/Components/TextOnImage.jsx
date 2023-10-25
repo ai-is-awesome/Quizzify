@@ -5,7 +5,7 @@ import myTheme from "../../theme";
 
 export default function TextOnImage({ text, link, bg, url, ...props }) {
   const [clicked, setClicked] = useState(false);
-  console.log("Click: ", clicked);
+
   return (
     <Box>
       <Box

@@ -15,6 +15,7 @@ import { BASE_URL } from "./services";
 import { getThemeObject } from "../theme";
 import { AuthContext } from "./useAuth";
 import { useNavigate } from "react-router-dom";
+import useAuthRedirect from "./hooks/useAuthRedirect";
 
 const colors = ["#374259", "#116A7B", "#F5EAEA"];
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
@@ -29,11 +30,13 @@ function App({ user }) {
   const auth = useContext(AuthContext);
   const navigate = useNavigate("/landing");
 
-  useEffect(() => {
-    if (!auth.isLoggedIn) {
-      navigate("/landing");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (auth.loading === false && auth.isLoggedIn === false) {
+  //     console.log("AUTH OBJECT WHILE NAVIGATING: ", auth);
+  //     navigate("/landing");
+  //   }
+  // }, []);
+  useAuthRedirect();
   const [state, setState] = useState(() => initialState);
 
   useEffect(() => {
