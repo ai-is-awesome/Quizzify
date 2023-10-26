@@ -3,6 +3,8 @@ import { auth } from "../firebase";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
@@ -13,6 +15,7 @@ export default function AuthProvider({ children }) {
     firebaseData: {},
     serverUserData: {},
     loading: true,
+    authError: null,
   });
 
   useEffect(() => {
@@ -32,21 +35,23 @@ export default function AuthProvider({ children }) {
     });
   }, [setUserData]);
 
-  const logout = () => {};
+  const signIn = async (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const logout = async () => {
+    return signOut(auth);
+  };
 
   const signUp = async (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .catch((e) => {
-        const errorCode = error.code;
-        const errorMessage = erorr.message;
-      });
+    return createUserWithEmailAndPassword(auth, email, password).catch((e) => {
+      const obj = { errorCode: e.code, errorMessage: e.message };
+      setUserData({ ...userData, authError: obj });
+    });
   };
 
   return (
-    <AuthContext.Provider value={{ ...userData, logout, signUp }}>
+    <AuthContext.Provider value={{ ...userData, logout, signUp, signIn }}>
       {children}
     </AuthContext.Provider>
   );

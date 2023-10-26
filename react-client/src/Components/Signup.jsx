@@ -20,8 +20,7 @@ import useAuthRedirect from "../hooks/useAuthRedirect";
 
 export default function Signup() {
   const [formData, setFormData] = useState({});
-  const { signUp } = useContext(AuthContext);
-  const [error, setError] = useState("");
+  const { signUp, authError } = useContext(AuthContext);
   useAuthRedirect(true, "/landing");
 
   console.log(signUp);
@@ -92,6 +91,14 @@ export default function Signup() {
                     personalized for your profile
                   </chakra.span>
                 </Box>
+              </Box>
+              {/* Auth errors */}
+              <Box py="4">
+                {authError && (
+                  <chakra.p color={"red.600"} fontWeight={"semibold"}>
+                    {authError.errorMessage}
+                  </chakra.p>
+                )}
               </Box>
               <Box mb="2rem">
                 Email Address

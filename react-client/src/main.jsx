@@ -11,12 +11,14 @@ import CardMatch from "./Components/CardMatch/CardMatch.jsx";
 import Signup from "./Components/Signup.jsx";
 import AuthProvider from "./useAuth.jsx";
 import LandingPage from "./Components/LandingPage.jsx";
+import Debug from "./Components/Debug.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App user={{ status: "logout" }} />,
   },
+  { path: "/debug", element: <Debug /> },
   {
     path: "/cardmatch",
     element: (
