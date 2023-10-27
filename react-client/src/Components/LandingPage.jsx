@@ -119,13 +119,19 @@ export default function LandingPage() {
             Features
           </Heading>
           {/* Flex box of features */}
-          <Box display={"flex"} justifyContent="left" gap="4rem">
+          <Box
+            display={{ lg: "flex", sm: "flex" }}
+            flexDirection={{ sm: "column" }}
+            justifyContent={{ lg: "left", sm: "center" }}
+            alignItems={{ sm: "center" }}
+            gap="4rem"
+          >
             <Img
               src="https://unsplash.com/photos/5Z8mR4vqJD4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk4NDEwOTcxfA&force=true&w=1920"
               flexGrow={"0"}
               maxW={"600px"}
               rounded={"2xl"}
-              maxWidth={{ sm: "50%" }}
+              maxWidth={{ sm: "80%" }}
             />
             <Box width={"100%"}>
               {/* Title of feature */}
