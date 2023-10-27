@@ -8,7 +8,7 @@ const client = new TranslateClient({ region: "us-east-1" });
 const translate = async (
   text = "Foreign Language Learning is awesome",
   sourceLanguageCode = "en",
-  TargetLanguageCode = "hi"
+  TargetLanguageCode = "fr"
 ) => {
   const input = {
     // TranslateTextRequest

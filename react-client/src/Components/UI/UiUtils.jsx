@@ -28,6 +28,10 @@ export const LandingPageFeatureUI = ({ featureTitle, desc }) => {
   );
 };
 
-export const LandingPageWrapper = ({ children }) => {
-  return <Box px={{ sm: "4", lg: "20" }}>{children}</Box>;
+export const LandingPageWrapper = ({ children, level = 1 }) => {
+  if (level === 1) {
+    return <Box px={{ sm: "4", lg: "20" }}>{children}</Box>;
+  } else if (level === 2) {
+    return <Box px={{ sm: "4", lg: "40" }}>{children}</Box>;
+  }
 };

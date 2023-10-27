@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../useAuth";
-import { Box, Button, Grid, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Grid, Heading, Image, Img, Text } from "@chakra-ui/react";
 import myTheme, { getThemeObject } from "../../theme";
 import { LandingPageFeatureUI, LandingPageWrapper } from "./UI/UiUtils";
 
 export default function LandingPage() {
   const authContext = useContext(AuthContext);
   console.log(authContext);
+  const themeObj = getThemeObject("white");
 
   return (
     <Box
@@ -104,16 +105,38 @@ export default function LandingPage() {
             </Box>
           </Box>
         </Grid>
-        <Heading
-          my={{ lg: "8", sm: "4" }}
-          textAlign={{ sm: "center", lg: "center" }}
-          fontSize={"5xl"}
-          letterSpacing={"-.05em"}
-          color={getThemeObject("white")["bgColorComplementary"]}
-          id="features"
-        >
-          Features
-        </Heading>
+        {/* Features */}
+        <Box minH="100vh" maxW={"1200px"} mx={"auto"}>
+          <Heading
+            my={{ lg: "16", sm: "4" }}
+            textAlign={{ sm: "center", lg: "center" }}
+            fontSize={"5xl"}
+            letterSpacing={"-.05em"}
+            color={getThemeObject("white")["bgColorComplementary"]}
+            id="features"
+          >
+            Features
+          </Heading>
+          {/* Flex box of features */}
+          <Box display={"flex"} justifyContent="left" gap="4rem">
+            <Img
+              src="https://unsplash.com/photos/5Z8mR4vqJD4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk4NDEwOTcxfA&force=true&w=1920"
+              flexGrow={"0"}
+              maxW={"600px"}
+              rounded={"2xl"}
+            />
+            <Box>
+              <Text
+                fontWeight={"extrabold"}
+                fontSize={"2rem"}
+                letterSpacing={"tight"}
+                color={themeObj.bgColorPrimary}
+              >
+                Translation
+              </Text>
+            </Box>
+          </Box>
+        </Box>
       </LandingPageWrapper>
     </Box>
   );
