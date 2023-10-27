@@ -21,7 +21,7 @@ import useAuthRedirect from "../hooks/useAuthRedirect";
 export default function Signup() {
   const [formData, setFormData] = useState({});
   const { signUp, authError } = useContext(AuthContext);
-  useAuthRedirect(true, "/landing");
+  useAuthRedirect(true, "/");
 
   console.log(signUp);
   const onSubmit = (e) => {
