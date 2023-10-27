@@ -31,8 +31,6 @@ export default function Dashboard({ quizzes }) {
 
   return (
     <Box>
-      {/* Upper section */}
-
       {/* Lower section */}
       {/* Buttons Box */}
       <Box

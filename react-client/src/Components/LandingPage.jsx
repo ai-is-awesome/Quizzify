@@ -108,7 +108,7 @@ export default function LandingPage() {
         {/* Features */}
         <Box minH="100vh" maxW={"1200px"} mx={"auto"}>
           <Heading
-            my={{ lg: "16", sm: "4" }}
+            my={{ lg: "32", sm: "4" }}
             textAlign={{ sm: "center", lg: "center" }}
             fontSize={"5xl"}
             letterSpacing={"-.05em"}
@@ -125,14 +125,27 @@ export default function LandingPage() {
               maxW={"600px"}
               rounded={"2xl"}
             />
-            <Box>
+            <Box width={"100%"}>
+              {/* Title of feature */}
               <Text
                 fontWeight={"extrabold"}
                 fontSize={"2rem"}
                 letterSpacing={"tight"}
                 color={themeObj.bgColorPrimary}
+                textAlign={"center"}
+                mb="12"
               >
                 Translation
+              </Text>
+              <Text
+                fontSize={"1.2rem"}
+                letterSpacing={"tight"}
+                lineHeight={"1.5"}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+                officiis, excepturi molestias adipisci harum veritatis aliquam
+                illum quae doloribus ipsam corporis iste minima at nostrum
+                maiores culpa ipsa natus tenetur!
               </Text>
             </Box>
           </Box>

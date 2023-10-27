@@ -9,7 +9,7 @@ export default function CustomButton({
 }) {
   const variants = {
     primary: {
-      backgroundColor: myTheme.primaryColor,
+      backgroundColor: myTheme.colors.primaryColor,
       // Add other primary variant styles if needed
     },
     // Add other variants and their respective styles here
@@ -22,7 +22,7 @@ export default function CustomButton({
       as={"a"}
       cursor={"pointer"}
       {...restOfTheProps}
-      backgroundColor={myTheme.primaryColor}
+      backgroundColor={myTheme.white.bgColorPrimary}
       color={"white"}
     >
       {loading ? <Spinner /> : children}
