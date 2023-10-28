@@ -44,6 +44,7 @@ export default function LandingPage() {
       py="4"
       gap={"8"}
       bg={"gray.200"}
+      animation={"all ease-in 3s"}
     >
       <Button
         as={"a"}
@@ -86,7 +87,7 @@ export default function LandingPage() {
         <Grid templateColumns={{ lg: "repeat(2, 1fr)", sm: "repeat(1, 1fr)" }}>
           <Image
             src="https://unsplash.com/photos/ORDz1m1-q0I/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjkwNjI2ODA5fA&force=true&w=2400"
-            maxW={{ sm: "none", lg: "100%" }}
+            maxW={{ sm: "50%", lg: "100%" }}
             rounded={"2xl"}
           />
           <Box
