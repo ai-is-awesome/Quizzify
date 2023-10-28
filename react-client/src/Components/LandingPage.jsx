@@ -87,7 +87,9 @@ export default function LandingPage() {
         <Grid templateColumns={{ lg: "repeat(2, 1fr)", sm: "repeat(1, 1fr)" }}>
           <Image
             src="https://unsplash.com/photos/ORDz1m1-q0I/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjkwNjI2ODA5fA&force=true&w=2400"
-            maxW={{ sm: "50%", lg: "100%" }}
+            maxW={{ sm: "90%", lg: "100%" }}
+            mx={"auto"}
+            my="4"
             rounded={"2xl"}
           />
           <Box
@@ -111,7 +113,7 @@ export default function LandingPage() {
               fontSize={"lg"}
               mx={"auto"}
               fontWeight={"bold"}
-              width={"75%"}
+              width={{ sm: "100%", lg: "75%" }}
               textAlign={{ sm: "center" }}
               mb="8"
             >
@@ -144,7 +146,12 @@ export default function LandingPage() {
               />
             </Box>
             {/* Button container */}
-            <Box display={"flex"} gap="4" ref={buttonRef}>
+            <Box
+              display={"flex"}
+              flexDirection={{ sm: "column", lg: "row" }}
+              gap="4"
+              ref={buttonRef}
+            >
               <Button
                 as={"a"}
                 href="#features"

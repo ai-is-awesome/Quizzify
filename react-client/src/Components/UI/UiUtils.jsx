@@ -6,6 +6,7 @@ export const LandingPageFeatureUI = ({ featureTitle, desc }) => {
   return (
     <Box
       display={"flex"}
+      flexDirection={{ sm: "column", lg: "row" }}
       justifyContent={"flex-start"}
       alignItems={"flex-start"}
       mb="4"
