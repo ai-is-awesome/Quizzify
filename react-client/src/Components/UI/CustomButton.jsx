@@ -21,9 +21,9 @@ export default function CustomButton({
     <Button
       as={"a"}
       cursor={"pointer"}
-      {...restOfTheProps}
       backgroundColor={myTheme.white.bgColorPrimary}
       color={"white"}
+      {...restOfTheProps}
     >
       {loading ? <Spinner /> : children}
     </Button>
