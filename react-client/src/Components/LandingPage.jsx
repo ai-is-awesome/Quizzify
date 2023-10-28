@@ -29,7 +29,7 @@ export default function LandingPage() {
         <Grid templateColumns={{ lg: "repeat(2, 1fr)", sm: "repeat(1, 1fr)" }}>
           <Image
             src="https://unsplash.com/photos/ORDz1m1-q0I/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjkwNjI2ODA5fA&force=true&w=2400"
-            maxW={{ sm: "50%" }}
+            maxW={{ sm: "none", lg: "100%" }}
             rounded={"2xl"}
           />
           <Box
@@ -121,7 +121,7 @@ export default function LandingPage() {
           {/* Flex box of features */}
           <Box
             display={{ lg: "flex", sm: "flex" }}
-            flexDirection={{ sm: "column" }}
+            flexDirection={{ sm: "column", lg: "row" }}
             justifyContent={{ lg: "left", sm: "center" }}
             alignItems={{ sm: "center" }}
             gap="4rem"
@@ -131,7 +131,7 @@ export default function LandingPage() {
               flexGrow={"0"}
               maxW={"600px"}
               rounded={"2xl"}
-              maxWidth={{ sm: "80%" }}
+              maxWidth={{ sm: "80%", lg: "600px" }}
             />
             <Box width={"100%"}>
               {/* Title of feature */}

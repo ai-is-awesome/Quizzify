@@ -1,9 +1,11 @@
 import { Box, HStack, Heading, Link } from "@chakra-ui/react";
+import { useContext } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
+import { AuthContext } from "../useAuth";
 
 export default function Navbar({ user }) {
-  console.log(user);
+  const authContext = useContext(AuthContext);
 
   const jsx =
     user.status === "logout" ? (
