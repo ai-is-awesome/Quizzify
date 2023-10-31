@@ -12,6 +12,9 @@ import {
 } from "@chakra-ui/react";
 import myTheme, { getThemeObject } from "../../theme";
 import { LandingPageFeatureUI, LandingPageWrapper } from "./UI/UiUtils";
+import translate2 from "../assets/images/translate2.png";
+import lp from "../assets/images/lp.png";
+import LandingPageFeatures from "./LandingPageFeatures";
 
 export default function LandingPage() {
   const authContext = useContext(AuthContext);
@@ -171,98 +174,7 @@ export default function LandingPage() {
             </Box>
           </Box>
         </Grid>
-        {/* Features */}
-        <Box minH="100vh" maxW={"1200px"} mx={"auto"}>
-          <Heading
-            my={{ lg: "16", sm: "4" }}
-            textAlign={{ sm: "center", lg: "center" }}
-            fontSize={"5xl"}
-            letterSpacing={"-.05em"}
-            color={getThemeObject("white")["bgColorComplementary"]}
-            id="features"
-          >
-            Features
-          </Heading>
-          {/* Flex box of features */}
-          <Box
-            display={{ sm: "flex", lg: "flex" }}
-            flexDirection={{ sm: "column", lg: "row" }}
-            justifyContent={{ sm: "center", lg: "left" }}
-            alignItems={{ sm: "center", lg: "normal" }}
-            gap="4rem"
-            my="6rem"
-          >
-            <Img
-              src="https://unsplash.com/photos/5Z8mR4vqJD4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk4NDEwOTcxfA&force=true&w=1920"
-              flexGrow={"0"}
-              maxW={"600px"}
-              rounded={"2xl"}
-              maxWidth={{ sm: "80%", lg: "600px" }}
-            />
-            <Box width={"100%"}>
-              {/* Title of feature */}
-              <Text
-                fontWeight={"extrabold"}
-                fontSize={"2rem"}
-                letterSpacing={"tight"}
-                color={themeObj.bgColorPrimary}
-                textAlign={"center"}
-                mb="12"
-              >
-                Translation
-              </Text>
-              <Text
-                fontSize={"1.2rem"}
-                letterSpacing={"tight"}
-                lineHeight={"1.5"}
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-                officiis, excepturi molestias adipisci harum veritatis aliquam
-                illum quae doloribus ipsam corporis iste minima at nostrum
-                maiores culpa ipsa natus tenetur!
-              </Text>
-            </Box>
-          </Box>
-          {/* Flex box of features */}
-          <Box
-            display={{ sm: "flex", lg: "flex" }}
-            flexDirection={{ sm: "column", lg: "row" }}
-            justifyContent={{ sm: "center", lg: "left" }}
-            alignItems={{ sm: "center", lg: "normal" }}
-            gap="4rem"
-          >
-            <Img
-              src="https://unsplash.com/photos/5Z8mR4vqJD4/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjk4NDEwOTcxfA&force=true&w=1920"
-              flexGrow={"0"}
-              maxW={"600px"}
-              rounded={"2xl"}
-              maxWidth={{ sm: "80%", lg: "600px" }}
-            />
-            <Box width={"100%"}>
-              {/* Title of feature */}
-              <Text
-                fontWeight={"extrabold"}
-                fontSize={"2rem"}
-                letterSpacing={"tight"}
-                color={themeObj.bgColorPrimary}
-                textAlign={"center"}
-                mb="12"
-              >
-                Language Packs
-              </Text>
-              <Text
-                fontSize={"1.2rem"}
-                letterSpacing={"tight"}
-                lineHeight={"1.5"}
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-                officiis, excepturi molestias adipisci harum veritatis aliquam
-                illum quae doloribus ipsam corporis iste minima at nostrum
-                maiores culpa ipsa natus tenetur!
-              </Text>
-            </Box>
-          </Box>
-        </Box>
+        <LandingPageFeatures />
       </LandingPageWrapper>
     </Box>
   );

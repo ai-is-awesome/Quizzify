@@ -50,8 +50,16 @@ export default function AuthProvider({ children }) {
     });
   };
 
+  const guestCheckout = async () => {
+    const demoemail = "johndoe";
+    const demopass = "johndoe";
+    return signIn(demoemail, demopass);
+  };
+
   return (
-    <AuthContext.Provider value={{ ...userData, logout, signUp, signIn }}>
+    <AuthContext.Provider
+      value={{ ...userData, logout, signUp, signIn, guestCheckout }}
+    >
       {children}
     </AuthContext.Provider>
   );

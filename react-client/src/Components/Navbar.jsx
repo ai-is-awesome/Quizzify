@@ -18,7 +18,12 @@ export default function Navbar({ user }) {
       </Box>
     ) : (
       <Box display={"flex"} alignItems={"center"} gap="4">
-        <CustomButton backgroundColor="red.400">Logout</CustomButton>
+        <CustomButton
+          backgroundColor="red.400"
+          onClick={() => authContext.logout()}
+        >
+          Logout
+        </CustomButton>
         {/* <CgProfile color="white" fontSize={"1.5rem"} cursor={"pointer"} /> */}
       </Box>
     );
