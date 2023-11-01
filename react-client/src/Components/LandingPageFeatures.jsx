@@ -11,7 +11,7 @@ export default function LandingPageFeatures() {
       {/* Features */}
       {/* Feature container */}
       <Heading
-        my={{ lg: "16", sm: "4" }}
+        my={{ lg: "16", sm: "8" }}
         textAlign={{ sm: "center", lg: "center" }}
         fontSize={"5xl"}
         letterSpacing={"-.05em"}
@@ -24,11 +24,11 @@ export default function LandingPageFeatures() {
       {/* Feaeture 1 box */}
       <Grid
         gridTemplateColumns={{
-          sm: "80%",
+          sm: "100%",
           lg: "minmax(0, 1fr) minmax(0, 1fr)",
         }}
-        rowGap="5rem"
-        columnGap={"4rem"}
+        rowGap={{ lg: "5rem" }}
+        columnGap={{ lg: "4rem" }}
       >
         <Img
           src={translate2}
@@ -36,6 +36,7 @@ export default function LandingPageFeatures() {
           maxW={"600px"}
           rounded={"2xl"}
           maxWidth={{ sm: "80%", lg: "600px" }}
+          mx={"auto"}
         />
         <Box width={"100%"}>
           {/* Title of feature */}
@@ -85,6 +86,26 @@ export default function LandingPageFeatures() {
             officiis, excepturi molestias adipisci harum veritatis aliquam illum
             quae doloribus ipsam corporis iste minima at nostrum maiores culpa
             ipsa natus tenetur!
+          </Text>
+        </Box>
+        <Img
+          src={lp}
+          w={"600px"}
+          h={"400px "}
+          rounded={"2xl"}
+          // maxWidth={{ sm: "80%", lg: "600px" }}
+          maxW={{ sm: "80%", lg: "600px" }}
+        />
+        <Box>
+          <Text
+            fontWeight={"extrabold"}
+            fontSize={"2rem"}
+            letterSpacing={"tight"}
+            color={themeObj.bgColorPrimary}
+            textAlign={"center"}
+            mb="12"
+          >
+            Word of the day
           </Text>
         </Box>
       </Grid>

@@ -17,6 +17,7 @@ import translate2 from "../assets/images/translate2.png";
 import lp from "../assets/images/lp.png";
 import LandingPageFeatures from "./LandingPageFeatures";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function LandingPage() {
   const authContext = useContext(AuthContext);
@@ -184,8 +185,10 @@ export default function LandingPage() {
             </Box>
           </Box>
         </Grid>
+
         <LandingPageFeatures />
       </LandingPageWrapper>
+      <Footer />
     </Box>
   );
 }
