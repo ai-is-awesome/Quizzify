@@ -51,7 +51,7 @@ export default function AuthProvider({ children }) {
   };
 
   const guestCheckout = async () => {
-    const demoemail = "johndoe";
+    const demoemail = "johndoe@gmail.com";
     const demopass = "johndoe";
     return signIn(demoemail, demopass);
   };

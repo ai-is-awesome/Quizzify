@@ -1,4 +1,4 @@
-import { Box, Grid, Heading, Image, Img, Text } from "@chakra-ui/react";
+import { Box, Center, Grid, Heading, Image, Img, Text } from "@chakra-ui/react";
 import React from "react";
 import { getThemeObject } from "../../theme";
 import translate2 from "../assets/images/translate2.png";
@@ -66,7 +66,7 @@ export default function LandingPageFeatures() {
           backgroundPosition={"center"}
           rounded={"2xl"}
           // maxWidth={{ sm: "80%", lg: "600px" }}
-          maxW={"600px"}
+          maxW={{ sm: "80%", lg: "600px" }}
         />
         <Box width={"100%"}>
           {/* Title of feature */}

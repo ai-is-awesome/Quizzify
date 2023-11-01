@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Center,
+  Flex,
   Grid,
   Heading,
   Image,
@@ -15,13 +16,31 @@ import { LandingPageFeatureUI, LandingPageWrapper } from "./UI/UiUtils";
 import translate2 from "../assets/images/translate2.png";
 import lp from "../assets/images/lp.png";
 import LandingPageFeatures from "./LandingPageFeatures";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
   const authContext = useContext(AuthContext);
   const [isSticky, setIsSticky] = useState(false);
   const buttonRef = useRef();
-  console.log(authContext);
+  const navigate = useNavigate();
+
   const themeObj = getThemeObject("white");
+  const landingPageData = {
+    topFeatures: [
+      {
+        title: "Quizzes",
+        desc: "Take part in quizzes and improve your language learning skills",
+      },
+      {
+        title: "Translation",
+        desc: "You can use the language translation right from within the dashboard",
+      },
+      {
+        title: "Word of the day",
+        desc: "Acquaint yourself with a new word to learn with a new word everytime you login",
+      },
+    ],
+  };
 
   useEffect(() => {
     const handeScroll = () => {
@@ -59,10 +78,9 @@ export default function LandingPage() {
       </Button>
 
       <Button
-        as={"a"}
-        href="/signup"
         bg={getThemeObject("white")["bgColorPrimary"]}
         color={"white"}
+        onClick={() => authContext.guestCheckout().then(() => navigate("/"))}
       >
         Checkout as a guest
       </Button>
@@ -113,10 +131,11 @@ export default function LandingPage() {
             Welcome to Fluentify
           </Heading> */}
             <Box
-              fontSize={"lg"}
+              fontSize={"1.7rem"}
               mx={"auto"}
               fontWeight={"bold"}
-              width={{ sm: "100%", lg: "75%" }}
+              letterSpacing={"tighter"}
+              width={{ sm: "100%", lg: "95%" }}
               textAlign={{ sm: "center" }}
               mb="8"
             >
@@ -131,22 +150,13 @@ export default function LandingPage() {
               w="75%"
               mb="8"
             >
-              <LandingPageFeatureUI
-                featureTitle={"Feature 2"}
-                desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quis libero nesciunt nemo minima. Pariatur illo placeat repellat! Est, quod?"
-              />
-              <LandingPageFeatureUI
-                featureTitle={"Translation"}
-                desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
-                laboriosam consectetur dicta pariatur possimus debitis quidem
-                expedita eius, illum suscipit!"
-              />
-              <LandingPageFeatureUI
-                featureTitle={"Translation"}
-                desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
-                laboriosam consectetur dicta pariatur possimus debitis quidem
-                expedita eius, illum suscipit!"
-              />
+              {landingPageData.topFeatures.map((featureObj) => (
+                <LandingPageFeatureUI
+                  key={featureObj.title}
+                  featureTitle={featureObj.title}
+                  desc={featureObj.desc}
+                />
+              ))}
             </Box>
             {/* Button container */}
             <Box
