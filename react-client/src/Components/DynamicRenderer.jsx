@@ -3,7 +3,7 @@ import { AuthContext } from "../useAuth";
 
 export default function DynamicRenderer({ children, forceOnboard = false }) {
   const authContext = useContext(AuthContext);
-  const onBoarded = false;
+  const onBoarded = true;
   if (authContext.loading) {
     return <>LOading</>;
   }
