@@ -43,6 +43,8 @@ export default function AuthProvider({ children }) {
     return signOut(auth);
   };
 
+  const isUserOnboarded = async () => {};
+
   const signUp = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password).catch((e) => {
       const obj = { errorCode: e.code, errorMessage: e.message };

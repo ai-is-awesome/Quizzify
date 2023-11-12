@@ -43,6 +43,10 @@ export default function LandingPage() {
     ],
   };
 
+  const checkoutAsGuest = () => {
+    authContext.guestCheckout().then(() => navigate("/"));
+  };
+
   useEffect(() => {
     const handeScroll = () => {
       const buttonOffset = buttonRef.current.offsetTop;
@@ -81,7 +85,7 @@ export default function LandingPage() {
       <Button
         bg={getThemeObject("white")["bgColorPrimary"]}
         color={"white"}
-        onClick={() => authContext.guestCheckout().then(() => navigate("/"))}
+        onClick={checkoutAsGuest}
       >
         Checkout as a guest
       </Button>
@@ -188,7 +192,42 @@ export default function LandingPage() {
 
         <LandingPageFeatures />
       </LandingPageWrapper>
-      <Footer />
+
+      {/* button container */}
+      <Box my="2rem" bg={"gray.100"}>
+        <Box
+          maxW={"1200px"}
+          m={"auto"}
+          display={"flex"}
+          justifyContent={"space-around"}
+          my="2rem"
+        >
+          <Button
+            as={"a"}
+            href="/signup"
+            bg={getThemeObject("white")["bgColorComplementary"]}
+            p={"1.5rem 4rem"}
+            color={"white"}
+            fontSize={"1.5rem"}
+          >
+            Login
+          </Button>
+          <Button
+            as={"a"}
+            href="/signup"
+            bg={getThemeObject("white")["bgColorPrimary"]}
+            p={"1.5rem 4rem"}
+            color={"white"}
+            fontSize={"1.5rem"}
+            onClick={checkoutAsGuest}
+          >
+            Checkout as Guest
+          </Button>
+        </Box>
+      </Box>
+      <Box mt="4rem">
+        <Footer />
+      </Box>
     </Box>
   );
 }

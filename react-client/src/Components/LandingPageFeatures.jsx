@@ -3,6 +3,8 @@ import React from "react";
 import { getThemeObject } from "../../theme";
 import translate2 from "../assets/images/translate2.png";
 import lp from "../assets/images/lp.png";
+import Footer from "./Footer";
+import { motion } from "framer-motion";
 
 export default function LandingPageFeatures() {
   const themeObj = getThemeObject("white");
