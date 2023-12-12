@@ -1,0 +1,24 @@
+@keyframes cardAnimation {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-1.2rem);
+  }
+}
+
+.card-pair-clicked {
+  animation: cardAnimation 0.3s ease;
+  transform: translateY(-1.2rem);
+}
+
+.card-pair-matched {
+  background-color: var(--chakra-colors-green-300) !important;
+  color: white !important;
+}
+
+.card-pair-incorrect {
+  background-color: var(--chakra-colors-red-300) !important;
+  color: white !important;
+}

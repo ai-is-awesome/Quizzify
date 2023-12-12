@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema({
   name: String,
   email: String,
   statistics: { type: mongoose.Schema.Types.ObjectId, ref: "Statistics" },
-  hash: String,
+  firebaseUID: {},
   preferredLanguages: [{ type: String }],
   languagePacks: [
     { type: mongoose.Schema.Types.ObjectId, ref: "LanguagePack" },
@@ -12,6 +12,6 @@ const userSchema = mongoose.Schema({
   isOnboarded: Boolean,
 });
 
-const model = mongoose.Model(userSchema, "User");
+const User = mongoose.model("User", userSchema);
 
-export default model;
+export default User;

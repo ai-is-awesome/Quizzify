@@ -9,11 +9,15 @@ import connectToDb from "./db.js";
 import translate from "./translate2.js";
 import { rateLimit } from "express-rate-limit";
 import Word from "./models/Word.js";
+import { getUIDFromIDToken, initializeFirebase } from "./firebase.js";
+import { requireParams, verify_token } from "./middleware.js";
+import User from "./models/User.js";
 
 const app = express();
 app.use(express.json());
 
 app.use(cors());
+const firebaseApp = initializeFirebase();
 
 // mongoose.connect(process.env.MONGO_DB_URL).then(() => {
 //   console.log("Connected to db");
@@ -51,6 +55,10 @@ app.get("/status", async (req, res) => {
     state_string = "Disconnecting";
   }
   return res.json({ Status: "Service is running", DB_state: state_string });
+});
+
+app.get("/get_user_details", async (req, res) => {
+  return res.json("FF");
 });
 
 app.post("/add_quiz", async (req, res) => {
@@ -158,6 +166,43 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
   return res.json("hello");
 });
+
+app.post("/verify_token", async (req, res) => {
+  getUIDFromIDToken(req.body.token)
+    .then((r) => res.json(r))
+    .catch((e) => console.log("Error: ", e));
+});
+
+app.post("/get_user_data", verify_token(), async (req, res) => {
+  const user = await User.findOne({ firebaseUID: req.firebaseUID });
+  if (!user) {
+    const user = new User({ firebaseUID: req.firebaseUID, isOnboarded: false });
+    const savedUser = await user.save();
+    return res.json(savedUser);
+  }
+  return res.json(user);
+});
+
+app.post(
+  "/onboard_user",
+  requireParams(["name"]),
+  verify_token(),
+  async (req, res) => {
+    const uid = req.firebaseUID;
+    const name = req.body.name;
+    const user = await User.findOne({ firebaseUID: uid });
+    let savedUser;
+    if (!user) {
+      const u = new User({ firebaseUID: uid, name: name, isOnboarded: true });
+      savedUser = await u.save();
+    } else {
+      user.name = name;
+      user.isOnboarded = true;
+      savedUser = await user.save();
+    }
+    res.json(savedUser);
+  }
+);
 
 app.listen(3001, () => {
   console.log("Listening to 3001");

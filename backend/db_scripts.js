@@ -3,6 +3,7 @@ import Quiz from "./models/LanguagePack.js";
 import fs from "fs";
 import translate from "./translate2.js";
 import Word from "./models/Word.js";
+import User from "./models/User.js";
 
 connectToDb();
 
@@ -49,6 +50,21 @@ async function addWordsToDb(input, output, origin, target) {
   }
 }
 
+async function unboard() {
+  const user = await User.findOne({
+    firebaseUID: "x1NIWpPHWYTHb205fjjRC6buEgL2",
+  });
+  console.log(user);
+  user.isOnboarded = false;
+  const u = await user.save();
+  return u;
+}
+
+async function getUser(obj) {
+  const user = await User.findOne(obj);
+  return user;
+}
+
 async function callAsyncOperation(func) {
   func()
     .then((d) => {
@@ -61,4 +77,4 @@ async function callAsyncOperation(func) {
     .catch((e) => console.log(e.message));
 }
 
-callAsyncOperation(fe);
+callAsyncOperation(() => unboard());
