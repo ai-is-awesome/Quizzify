@@ -37,10 +37,7 @@ export type useAuthDataType = UserObjectType & {
   isUserOnboarded: () => boolean;
 };
 
-
-export type onboardUserPayload {
-  
+export type onboardUserPayload = {
   name: string;
-  token: string;  
-}
-
+  token: string;
+};
