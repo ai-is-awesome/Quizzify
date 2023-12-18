@@ -8,7 +8,8 @@ const myTheme = {
     6: "#BDDEE4",
   },
   white: {
-    bgColorPrimary: "#116A7B",
+    // bgColorPrimary: "#116A7B",
+    bgColorPrimary: "#FF8C42",
     bgColorComplementary: "#DA25AC",
     bgColorCard: "gray.100",
     textColorMain: "white",

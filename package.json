@@ -1,0 +1,17 @@
+{
+  "name": "fluentify",
+  "version": "1.0.0",
+  "description": "Live Demo: https://fluentify.netlify.app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd fluntify-react-typescript-client && npm run dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

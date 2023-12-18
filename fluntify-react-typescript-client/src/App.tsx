@@ -16,6 +16,8 @@ import { getThemeObject } from "../theme";
 import { AuthContext } from "./useAuth";
 import { useNavigate } from "react-router-dom";
 import useAuthRedirect from "./hooks/useAuthRedirect";
+import DynamicRenderer from "./Components/DynamicRenderer";
+import { PillButton } from "./Components/UI/PillButton";
 
 const colors = ["#374259", "#116A7B", "#F5EAEA"];
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
@@ -64,17 +66,29 @@ function App({ user }) {
     </>
   );
 
+  // return (
+  //   <Box
+  //     // backgroundColor={themeObject.bgColorPrimary}
+  //     minHeight={"100vh"}
+  //     minWidth={"100vw"}
+  //     // color={themeObject.textColorMain}
+  //   >
+  //     <Navbar user={user} />
+  //     <Dashboard quizzes={state.quizzes} user={initialState.user} />
+  //     <Box width={"60%"} margin={"auto"} padding="4rem"></Box>
+  //   </Box>
+  // );
+
   return (
-    <Box
-      backgroundColor={themeObject.bgColorPrimary}
-      minHeight={"100vh"}
-      minWidth={"100vw"}
-      color={themeObject.textColorMain}
-    >
-      <Navbar user={user} />
-      <Dashboard quizzes={state.quizzes} user={initialState.user} />
-      <Box width={"60%"} margin={"auto"} padding="4rem"></Box>
-    </Box>
+    <DynamicRenderer sidebar={true}>
+      <div>
+        <Box w="50%" m="auto" mb="4rem">
+          <PillButton bg={"orange.500"} color={"white"} w="max-content">
+            Progress
+          </PillButton>
+        </Box>
+      </div>
+    </DynamicRenderer>
   );
 }
 

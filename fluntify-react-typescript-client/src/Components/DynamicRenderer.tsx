@@ -4,8 +4,19 @@ import { getUserData } from "../services";
 import OnBoardForm from "./OnboardForm";
 import { useNavigate } from "react-router-dom";
 import { Box, Spinner } from "@chakra-ui/react";
+import { Sidebar } from "./Sidebar";
 
-export default function DynamicRenderer({ children, forceOnboard = false }) {
+interface Props {
+  children: React.ReactNode;
+  forceOnboard?: boolean;
+  sidebar?: boolean;
+}
+
+export default function DynamicRenderer({
+  children,
+  // forceOnboard = false,
+  sidebar,
+}: Props) {
   const authContext = useContext(AuthContext);
   const onBoarded: boolean = authContext?.isUserOnboarded();
   const isLoggedIn = authContext?.firebaseAuthState.isLoggedIn;
@@ -32,5 +43,10 @@ export default function DynamicRenderer({ children, forceOnboard = false }) {
     return <OnBoardForm />;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      {sidebar && <Sidebar />}
+      {children}
+    </>
+  );
 }
