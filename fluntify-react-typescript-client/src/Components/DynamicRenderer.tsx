@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, Spinner } from "@chakra-ui/react";
 import { Sidebar } from "./Sidebar";
 
-interface Props {
+export interface DynamicRendererProps {
   children: React.ReactNode;
   forceOnboard?: boolean;
   sidebar?: boolean;
@@ -43,10 +43,16 @@ export default function DynamicRenderer({
     return <OnBoardForm />;
   }
 
-  return (
-    <>
-      {sidebar && <Sidebar />}
-      {children}
-    </>
-  );
+  if (sidebar) {
+    return (
+      <>
+        <Box display={"flex"}>
+          {sidebar && <Sidebar />}
+          {children}
+        </Box>
+      </>
+    );
+  } else {
+    return <>{children}</>;
+  }
 }

@@ -19,20 +19,20 @@ const router = createBrowserRouter([
     element: <App user={{ status: "logout" }} />,
   },
   { path: "/debug", element: <Debug /> },
-  {
-    path: "/cardmatch",
-    element: (
-      <>
-        <CardMatch mode={"fullScreen"} />
-      </>
-    ),
-  },
-  { path: "quiz/:quizId", element: <Quiz /> },
+  // {
+  //   path: "/cardmatch",
+  //   element: (
+  //     <>
+  //       <CardMatch mode={"fullScreen"} />
+  //     </>
+  //   ),
+  // },
+  // { path: "quiz/:quizId", element: <Quiz /> },
   { path: "signup", element: <Signup /> },
-  {
-    path: "/user",
-    element: <App user={{ name: "Piyush Lamba", status: "loggedin" }} />,
-  },
+  // {
+  //   path: "/user",
+  //   element: <App user={{ name: "Piyush Lamba", status: "loggedin" }} />,
+  // },
   { path: "/landing", element: <LandingPage /> },
 ]);
 

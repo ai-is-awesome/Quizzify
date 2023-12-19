@@ -6,7 +6,7 @@ import { BiUpvote, BiDownvote } from "react-icons/bi";
 import React from "react";
 import CustomButton from "./UI/CustomButton";
 
-interface QuizCardProps {
+interface QuizCardProps extends BoxProps {
   quizName: string;
   quizCategory?: string;
   numberOfQuestions: number;
@@ -30,6 +30,7 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
       backgroundRepeat={"no-repeat"}
       backgroundPosition={"center"}
       color={"white"}
+      {...props}
     >
       <Box display={"flex"} flexDir={"row"} justifyContent={"space-between"}>
         <Text fontSize={"1.5rem"} fontWeight={"semibold"}>

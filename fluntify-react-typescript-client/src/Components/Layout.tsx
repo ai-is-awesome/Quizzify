@@ -1,9 +1,19 @@
-import { Box } from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
+import DynamicRenderer, { DynamicRendererProps } from "./DynamicRenderer";
 
-export default function Layout({ children }) {
-  return (
-    <Box minH={"100vh"} background={"#116A7B"}>
-      {children}
-    </Box>
-  );
+interface LayoutProps extends DynamicRendererProps, BoxProps {
+  children: React.ReactNode;
 }
+
+import React from "react";
+
+const Layout: React.FC<LayoutProps> = (props) => {
+  return (
+    <DynamicRenderer {...props}>
+      <Box w={"70%"} mx={"auto"} my="4rem" {...props}>
+        {props.children}
+      </Box>
+    </DynamicRenderer>
+  );
+};
+export default Layout;
