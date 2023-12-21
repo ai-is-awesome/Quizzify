@@ -1,8 +1,9 @@
 import { User as FirebaseUser } from "firebase/auth";
 
 type UserServerSuccessType = {
-  isOnboarded: boolean;
+  isOnboarded?: boolean;
   loadingStatus: "success";
+  authStatus: "logged-in" | "guest" | "logged-out";
   [other: string]: any;
 };
 

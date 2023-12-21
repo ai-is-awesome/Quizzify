@@ -27,7 +27,12 @@ export default function DynamicRenderer({
   const navigate = useNavigate();
   // const onBoarded: boolean = true;
 
-  if (firebaseAuthStatus === "success" && isLoggedIn === false) {
+  // If the firebase has loaded and the consumer is expecting an authenticated user then redirect, otherwise render children
+  if (
+    firebaseAuthStatus === "success" &&
+    auth === true &&
+    isLoggedIn === false
+  ) {
     navigate("/landing");
   }
 

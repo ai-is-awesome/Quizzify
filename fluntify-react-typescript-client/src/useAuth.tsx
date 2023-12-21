@@ -46,13 +46,28 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     console.log("User data is : ", userData);
+
+    // If the user is logged out, then set the serverUserData to null and loading status to succcess with authStatus as logged-out
+    if (
+      userData.serverUserData.loadingStatus !== "success" &&
+      userData.firebaseAuthState.isLoggedIn === false
+    ) {
+      setUserData({
+        ...userData,
+        serverUserData: {
+          data: null,
+          loadingStatus: "success",
+          authStatus: "logged-out",
+        },
+      });
+    }
+    // If the user is loggedin but the serverUserData is not loaded, then load the serverUserData
     if (
       userData.firebaseAuthState.status === "success" &&
       userData.serverUserData.loadingStatus !== "success"
     ) {
       const accessToken =
         userData.firebaseAuthState.firebaseUserData?.accessToken;
-
       getUserData(accessToken).then((resp) =>
         setUserData({
           ...userData,

@@ -11,7 +11,7 @@ interface NewDashboardProps {
 
 export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
   return (
-    <Layout sidebar={true} my="0">
+    <Layout sidebar={true} my="0" auth={false}>
       {/* Button Container */}
       <Box display={"flex"} gap="1" mb={"16"} mt="2">
         <Button flexGrow={"1"}>Explore</Button>

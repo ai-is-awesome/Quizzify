@@ -18,43 +18,16 @@ import { NewDashboard } from "./Components/NewDashboard";
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
 
 function App({ user }) {
-  const initialState = {
-    quizzes: { status: "loading", data: [] },
-    user: user,
-    themeName: "white",
-  };
+  // const [state, setState] = useState(() => initialState);
 
-  const [state, setState] = useState(() => initialState);
-
-  useEffect(() => {
-    const url = `${BASE_URL}get_all_quiz`;
-    axios.get(url).then((resp) =>
-      setState((initial) => {
-        return { ...initial, quizzes: { status: "loaded", data: resp.data } };
-      })
-    );
-  }, []);
-
-  const jsx1 = (
-    <>
-      <Box marginBottom={"1rem"}>
-        <Timeline />
-        <Heading marginBottom={"1rem"}>
-          Question: What is the meaning of{" "}
-        </Heading>
-        <Heading>
-          <span style={{ color: colors2[2] }}>"WORD"</span>
-        </Heading>
-      </Box>
-      <Center marginBottom={"1rem"}>
-        <TextInput placeholder="Enter answer here" />
-      </Center>
-      <Radio choices={["Hello", "there"]} />
-      <Button color="white" backgroundColor={colors2[2]}>
-        Submit
-      </Button>
-    </>
-  );
+  // useEffect(() => {
+  //   const url = `${BASE_URL}get_all_quiz`;
+  //   axios.get(url).then((resp) =>
+  //     setState((initial) => {
+  //       return { ...initial, quizzes: { status: "loaded", data: resp.data } };
+  //     })
+  //   );
+  // }, []);
 
   // return (
   //   <Box
