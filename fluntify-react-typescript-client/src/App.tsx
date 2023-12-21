@@ -5,19 +5,16 @@ import { Box, Button, Center, Heading } from "@chakra-ui/react";
 import TextInput from "./Components/FormComponents/TextInput/TextInput";
 import Timeline from "./Components/Timeline/Timeline";
 import Radio from "./Components/Radio/RadioInput";
-import CardMatch from "./Components/CardMatch/CardMatch";
-import Dashboard from "./Dashboard/Dashboard";
+
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { backIn } from "framer-motion";
-import Navbar from "./Components/Navbar";
 import { BASE_URL } from "./services";
 import { getThemeObject } from "../theme";
 import { AuthContext } from "./useAuth";
 import { useNavigate } from "react-router-dom";
 import { NewDashboard } from "./Components/NewDashboard";
 
-const colors = ["#374259", "#116A7B", "#F5EAEA"];
+// const colors = ["#374259", "#116A7B", "#F5EAEA"];
 const colors2 = ["#a64a1f", "#35df20", "#00ff87"];
 
 function App({ user }) {
@@ -26,9 +23,6 @@ function App({ user }) {
     user: user,
     themeName: "white",
   };
-
-  const auth = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const [state, setState] = useState(() => initialState);
 
@@ -40,8 +34,6 @@ function App({ user }) {
       })
     );
   }, []);
-
-  const themeObject = getThemeObject(state.themeName);
 
   const jsx1 = (
     <>
