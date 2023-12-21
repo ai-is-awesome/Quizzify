@@ -5,7 +5,11 @@ import { QuizCard } from "./QuizCard";
 import { getApp } from "firebase/app";
 import Layout from "./Layout";
 
-export const NewDashboard: React.FC<any> = (props) => {
+interface NewDashboardProps {
+  children: React.ReactNode;
+}
+
+export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
   return (
     <Layout sidebar={true} my="0">
       {/* Button Container */}
@@ -14,8 +18,10 @@ export const NewDashboard: React.FC<any> = (props) => {
         <Button flexGrow={"1"}>Create Quiz</Button>
       </Box>
       {/* QUiz Card parent box */}
-
-      <Grid gridTemplateColumns={"repeat(3,1fr)"} gap={"4"}>
+      <Grid
+        gridTemplateColumns={{ sm: "repeat(1, 1fr)", lg: "repeat(3,1fr)" }}
+        gap={"4"}
+      >
         <QuizCard
           quizName="Saturday Night Live"
           numberOfQuestions={5}

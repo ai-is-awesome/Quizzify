@@ -3,24 +3,27 @@ import { AuthContext } from "../useAuth";
 import { getUserData } from "../services";
 import OnBoardForm from "./OnboardForm";
 import { useNavigate } from "react-router-dom";
-import { Box, Spinner } from "@chakra-ui/react";
+import { Box, Spinner, useBreakpointValue } from "@chakra-ui/react";
 import { Sidebar } from "./Sidebar";
 
 export interface DynamicRendererProps {
   children: React.ReactNode;
   forceOnboard?: boolean;
   sidebar?: boolean;
+  auth?: boolean;
 }
 
 export default function DynamicRenderer({
   children,
   // forceOnboard = false,
   sidebar,
-}: Props) {
+  auth = false,
+}: DynamicRendererProps) {
   const authContext = useContext(AuthContext);
   const onBoarded: boolean = authContext?.isUserOnboarded();
   const isLoggedIn = authContext?.firebaseAuthState.isLoggedIn;
   const firebaseAuthStatus = authContext?.firebaseAuthState.status;
+  const isSmallScreen = useBreakpointValue({ base: true, lg: false, sm: true });
   const navigate = useNavigate();
   // const onBoarded: boolean = true;
 
@@ -39,7 +42,7 @@ export default function DynamicRenderer({
     );
   }
 
-  if (!onBoarded) {
+  if (auth && !onBoarded) {
     return <OnBoardForm />;
   }
 
@@ -47,7 +50,7 @@ export default function DynamicRenderer({
     return (
       <>
         <Box display={"flex"}>
-          {sidebar && <Sidebar />}
+          {!isSmallScreen && sidebar && <Sidebar />}
           {children}
         </Box>
       </>

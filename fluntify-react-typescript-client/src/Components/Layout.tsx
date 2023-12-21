@@ -10,7 +10,7 @@ import React from "react";
 const Layout: React.FC<LayoutProps> = (props) => {
   return (
     <DynamicRenderer {...props}>
-      <Box w={"70%"} mx={"auto"} my="4rem" {...props}>
+      <Box w={{ sm: "100%", lg: "70%" }} mx={"auto"} my="4rem" {...props}>
         {props.children}
       </Box>
     </DynamicRenderer>
