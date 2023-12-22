@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const languagePackSchema = mongoose.Schema({
+const quizSchema = mongoose.Schema({
   questions: [{ type: mongoose.Schema.Types.ObjectId, ref: "Question" }],
   name: { type: String, required: true },
   numberOfQuestions: Number,
@@ -8,6 +8,6 @@ const languagePackSchema = mongoose.Schema({
   teachingMaterials: [{ type: mongoose.Schema.Types.ObjectId, ref: "" }],
 });
 
-const LanguagePack = mongoose.model("Quiz", languagePackSchema);
+const Quiz = mongoose.model("Quiz", quizSchema);
 
-export default LanguagePack;
+export default Quiz;

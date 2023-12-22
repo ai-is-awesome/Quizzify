@@ -40,7 +40,7 @@ export default function Navbar({ user }) {
           fontWeight={"bold"}
           textTransform={"uppercase"}
         >
-          Fluentify
+          Quizzify
         </Link>
         {jsx}
       </HStack>

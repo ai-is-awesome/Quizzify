@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import "dotenv/config";
-import LanguagePack from "./models/LanguagePack.js";
+import Quiz from "./models/LanguagePack.js";
 import cors from "cors";
 import Choice from "./models/Choice.js";
 import Question from "./models/Question.js";
@@ -65,14 +65,14 @@ app.post("/add_quiz", async (req, res) => {
   console.log(req.body);
   try {
     // Validation
-    const quiz = await LanguagePack.find({ quizName: req.body.name });
+    const quiz = await Quiz.find({ quizName: req.body.name });
     console.log("Quiz: ", quiz);
     if (quiz.length) {
       return res.json({ message: "Quiz name already exists" });
     }
 
     // Creating new Quiz Object
-    const q = new LanguagePack({
+    const q = new Quiz({
       quizName: req.body.name,
       questions: [],
       numberOfQuestions: 0,
@@ -106,7 +106,7 @@ app.post("/translate", async (req, res) => {
 app.get("/get_all_quiz", async (req, res) => {
   console.log("get request: ");
   try {
-    const quizzes = await LanguagePack.find({});
+    const quizzes = await Quiz.find({});
     return res.json(quizzes);
   } catch (e) {
     return res.json({ message: e.message });
@@ -117,7 +117,7 @@ app.post("/get_quiz_by_id", async (req, res) => {
   try {
     const quizId = req.body.quizId;
     console.log(quizId);
-    const quiz = await LanguagePack.findById({ _id: quizId }).populate([
+    const quiz = await Quiz.findById({ _id: quizId }).populate([
       { path: "questions", populate: [{ path: "choices" }] },
     ]);
     return res.json(quiz);
@@ -144,7 +144,7 @@ app.post("/add_question_to_quiz", async (req, res) => {
 
     const questionDoc = await question.save();
 
-    const quiz = await LanguagePack.findById(quizId);
+    const quiz = await Quiz.findById(quizId);
     console.log(mongoose.Types.ObjectId.isValid(questionDoc._id));
     quiz.questions.push(questionDoc._id);
     quiz.numberOfQuestions = quiz.numberOfQuestions + 1;
