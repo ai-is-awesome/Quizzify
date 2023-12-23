@@ -21,7 +21,8 @@ export const requireParams = (params) => {
     console.log("hit require params");
     const missing = [];
     params.forEach((param) => {
-      if (!req.body[param]) {
+      console.log("param is : ", param);
+      if (!(param in req.body)) {
         missing.push(param);
       }
     });

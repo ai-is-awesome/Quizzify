@@ -1,7 +1,0 @@
-POST http://localhost:3001/add_quiz HTTP/1.1
-Content-Type: application/json
-Accept: application/json
-
-{
-    "name" : "Learn Common words in German"
-}

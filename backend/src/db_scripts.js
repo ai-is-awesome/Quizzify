@@ -1,9 +1,11 @@
 import connectToDb from "./db.js";
-import Quiz from "./models/LanguagePack.js";
+import Quiz from "./models/Quiz.js";
 import fs from "fs";
-import translate from "./translate2.js";
+import translate from "./helpers/translate2.js";
 import Word from "./models/Word.js";
 import User from "./models/User.js";
+import QuizManager from "./queries.js";
+import Category from "./models/Category.js";
 
 connectToDb();
 
@@ -12,18 +14,7 @@ const deleteAllQuiz = async () => {
 };
 
 async function fe() {
-  const rawData = fs.readFileSync("vocab_data.json");
-  const data = JSON.parse(rawData);
-  console.log(data.length);
-  return;
-  const outputArray = [];
-  for (let i = 0; i < data.length; i++) {
-    const output = await translate(data[i], "en", "ta");
-    console.log(i);
-    outputArray.push(output);
-  }
-
-  fs.writeFileSync("output-vocab-tamil.json", JSON.stringify(outputArray));
+  deleteAllQuiz();
 }
 
 async function validateJSON(f1, f2) {
@@ -77,4 +68,4 @@ async function callAsyncOperation(func) {
     .catch((e) => console.log(e.message));
 }
 
-callAsyncOperation(() => unboard());
+callAsyncOperation(() => fe());

@@ -1,17 +1,18 @@
 import express from "express";
 import mongoose from "mongoose";
 import "dotenv/config";
-import Quiz from "./models/LanguagePack.js";
+import Quiz from "./models/Quiz.js";
 import cors from "cors";
 import Choice from "./models/Choice.js";
 import Question from "./models/Question.js";
 import connectToDb from "./db.js";
-import translate from "./translate2.js";
+import translate from "./helpers/translate2.js";
 import { rateLimit } from "express-rate-limit";
 import Word from "./models/Word.js";
 import { getUIDFromIDToken, initializeFirebase } from "./firebase.js";
 import { requireParams, verify_token } from "./middleware.js";
 import User from "./models/User.js";
+import QuizManager from "./queries.js";
 
 const app = express();
 app.use(express.json());
@@ -61,28 +62,22 @@ app.get("/get_user_details", async (req, res) => {
   return res.json("FF");
 });
 
-app.post("/add_quiz", async (req, res) => {
-  console.log(req.body);
-  try {
+app.post(
+  "/create_quiz",
+  requireParams(["token", "quizName", "category", "isTimed"]),
+  verify_token(),
+  async (req, res) => {
     // Validation
-    const quiz = await Quiz.find({ quizName: req.body.name });
-    console.log("Quiz: ", quiz);
-    if (quiz.length) {
-      return res.json({ message: "Quiz name already exists" });
+    const quizManager = new QuizManager();
+    const user = await User.findOne({ firebaseUID: req.firebaseUID });
+    try {
+      const resp = await quizManager.create_quiz(req.body, user);
+      return res.json(resp);
+    } catch (e) {
+      return res.json({ error: e.message });
     }
-
-    // Creating new Quiz Object
-    const q = new Quiz({
-      quizName: req.body.name,
-      questions: [],
-      numberOfQuestions: 0,
-    });
-    const callback = await q.save();
-    return res.json(callback);
-  } catch (e) {
-    return res.json({ message: e.message });
   }
-});
+);
 
 app.post("/get_random_word_of_the_day", async (req, res) => {
   const count = await Word.count({});
