@@ -42,3 +42,16 @@ export type onboardUserPayload = {
   name: string;
   token: string;
 };
+
+export type QuizType = {
+  _id: string;
+  name: string;
+  questions: string[];
+  numberOfQuestions: number;
+  upvotes: number;
+  downvotes: number;
+  created_by: string;
+  isTimed: boolean;
+  created_at: Date;
+  category: { name: string; _id: string };
+};

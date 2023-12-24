@@ -101,7 +101,7 @@ app.post("/translate", async (req, res) => {
 app.get("/get_all_quiz", async (req, res) => {
   console.log("get request: ");
   try {
-    const quizzes = await Quiz.find({});
+    const quizzes = await Quiz.find({}).populate("category");
     return res.json(quizzes);
   } catch (e) {
     return res.json({ message: e.message });

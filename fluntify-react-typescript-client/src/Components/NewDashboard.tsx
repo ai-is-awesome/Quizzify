@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DynamicRenderer from "./DynamicRenderer";
 import { Box, Button, Grid } from "@chakra-ui/react";
 import { QuizCard } from "./QuizCard";
 import { getApp } from "firebase/app";
 import Layout from "./Layout";
+import { getAllQuizzes } from "../services";
+import { QuizType } from "../shared/types";
 
 interface NewDashboardProps {
   children: React.ReactNode;
 }
 
 export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
+  const [data, setData] = useState<QuizType[]>([]);
+
+  useEffect(() => {
+    getAllQuizzes().then((res) => {
+      setData(res.data);
+    });
+  }, []);
+
   return (
     <Layout sidebar={true} my="0" auth={false}>
       {/* Button Container */}
@@ -22,6 +32,13 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
         gridTemplateColumns={{ sm: "repeat(1, 1fr)", lg: "repeat(3,1fr)" }}
         gap={"4"}
       >
+        {data.map((quiz) => (
+          <QuizCard
+            quizName={quiz.name}
+            numberOfQuestions={quiz.numberOfQuestions}
+            quizCategory={quiz.category.name}
+          />
+        ))}
         <QuizCard
           quizName="Saturday Night Live"
           numberOfQuestions={5}

@@ -33,3 +33,8 @@ export const onboardUserService: (payload: onboardUserPayload) => void = async (
   const resp = await axios.post(ONBOARD_SERVICE_URL, payload);
   return resp;
 };
+
+export const getAllQuizzes = async () => {
+  const data = await axios.get(BASE_URL + "get_all_quiz");
+  return data;
+};

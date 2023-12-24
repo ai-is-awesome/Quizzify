@@ -39,7 +39,7 @@ class QuizManager {
       name: quizData.quizName,
       questions: [],
       numberOfQuestions: 0,
-      category: quizData.category._id,
+      category: category._id,
       isTimed: quizData.isTimed,
       created_by: userData._id,
       description: quizData.description,
