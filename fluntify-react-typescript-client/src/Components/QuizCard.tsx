@@ -36,6 +36,7 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
         <Text fontSize={"1.5rem"} fontWeight={"semibold"}>
           {props.quizName}
         </Text>
+
         <Box
           display={"flex"}
           justifyContent={"center"}
@@ -48,6 +49,20 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
           </Text>
         </Box>
       </Box>
+      {props.quizCategory && (
+        <Box
+          as="a"
+          cursor={"pointer"}
+          bg={"green.500"}
+          px=".5rem"
+          py=".3rem"
+          color={"white"}
+          rounded={"xl"}
+          width={"max-content"}
+        >
+          {props.quizCategory}
+        </Box>
+      )}
       {/* Description Box */}
       <Box>{props?.quizDescription}</Box>
       {/* Lower box for number of question and cat */}
@@ -61,11 +76,6 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
         >
           <Text color={"black"}>Q: {props.numberOfQuestions}</Text>
         </Box>
-        {props.quizCategory && (
-          <Button bg={"green.500"} p=".4rem" color={"white"} rounded={"md"}>
-            {props.quizCategory}
-          </Button>
-        )}
       </Box>
       <Box display={"flex"} gap={".5rem"}>
         {/* <FaThumbsUp color="white" /> */}
