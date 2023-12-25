@@ -5,7 +5,6 @@ const userSchema = mongoose.Schema({
   email: String,
   firebaseUID: { type: String },
   preferredLanguages: [{ type: String }],
-
   isOnboarded: Boolean,
 });
 

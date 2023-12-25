@@ -54,4 +54,5 @@ export type QuizType = {
   isTimed: boolean;
   created_at: Date;
   category: { name: string; _id: string };
+  description: string;
 };

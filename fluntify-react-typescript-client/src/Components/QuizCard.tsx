@@ -50,33 +50,38 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
         </Box>
       </Box>
       {props.quizCategory && (
-        <Box
-          as="a"
-          cursor={"pointer"}
-          bg={"green.500"}
-          px=".5rem"
-          py=".3rem"
-          color={"white"}
-          rounded={"xl"}
-          width={"max-content"}
-        >
-          {props.quizCategory}
+        <Box display={"flex"} gap={".5rem"}>
+          <Box
+            as="a"
+            cursor={"pointer"}
+            bg={"green.500"}
+            px=".5rem"
+            py=".3rem"
+            color={"white"}
+            rounded={"xl"}
+            width={"max-content"}
+          >
+            {props.quizCategory}
+          </Box>
+          <Box
+            bg="white"
+            width={"max-content"}
+            px={".5rem"}
+            display={"flex"}
+            alignItems={"center"}
+            rounded={"full"}
+            fontWeight={"bold"}
+            background="gray.800"
+            color="white"
+          >
+            <Text>Questions: {props.numberOfQuestions}</Text>
+          </Box>
         </Box>
       )}
       {/* Description Box */}
       <Box>{props?.quizDescription}</Box>
       {/* Lower box for number of question and cat */}
-      <Box display={"flex"} alignItems={"center"} gap={"1rem"}>
-        <Box
-          bg="white"
-          width={"max-content"}
-          p={".5rem"}
-          rounded={"md"}
-          fontWeight={"bold"}
-        >
-          <Text color={"black"}>Q: {props.numberOfQuestions}</Text>
-        </Box>
-      </Box>
+      <Box display={"flex"} alignItems={"center"} gap={"1rem"}></Box>
       <Box display={"flex"} gap={".5rem"}>
         {/* <FaThumbsUp color="white" /> */}
         <BiUpvote fontSize="1.5rem" />

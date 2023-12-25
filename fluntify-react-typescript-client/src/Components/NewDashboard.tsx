@@ -37,6 +37,7 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
             quizName={quiz.name}
             numberOfQuestions={quiz.numberOfQuestions}
             quizCategory={quiz.category.name}
+            quizDescription={quiz.description}
           />
         ))}
         <QuizCard
@@ -48,6 +49,7 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
 
           // imageURL="https://unsplash.com/photos/1q9DdwR25Pk/download?ixid=M3wxMjA3fDB8MXxhbGx8Mnx8fHx8fDJ8fDE3MDI4ODgyMTR8&force=true&w=2400"
         />
+
         <QuizCard
           quizName="Maths Quiz"
           numberOfQuestions={5}

@@ -68,4 +68,4 @@ async function callAsyncOperation(func) {
     .catch((e) => console.log(e.message));
 }
 
-callAsyncOperation(() => fe());
+callAsyncOperation(() => deleteAllQuiz());

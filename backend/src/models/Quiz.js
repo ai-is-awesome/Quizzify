@@ -13,6 +13,7 @@ const quizSchema = mongoose.Schema({
   image_url: { type: String },
   timeLimitInSeconds: { type: Number },
   isTimed: { type: Boolean, default: false },
+  cardColor: { type: String },
 });
 
 const Quiz = mongoose.model("Quiz", quizSchema);
