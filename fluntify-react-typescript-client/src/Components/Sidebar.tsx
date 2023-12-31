@@ -23,6 +23,7 @@ export const Sidebar: React.FC = (props) => {
           letterSpacing={"tighter"}
           fontWeight={"bold"}
           textTransform={"uppercase"}
+          href="/"
         >
           Quizzify
         </Link>

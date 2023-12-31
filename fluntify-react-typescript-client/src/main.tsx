@@ -12,6 +12,7 @@ import Signup from "./Components/Signup.jsx";
 import AuthProvider from "./useAuth.jsx";
 import LandingPage from "./Components/LandingPage.jsx";
 import Debug from "./Components/Debug.jsx";
+import QuizMaster from "./Components/QuizMaster/QuizMaster.js";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
   //   element: <App user={{ name: "Piyush Lamba", status: "loggedin" }} />,
   // },
   { path: "/landing", element: <LandingPage /> },
+  { path: "/quiz/:quizId", element: <QuizMaster /> },
 ]);
 
 const breakpoints = {

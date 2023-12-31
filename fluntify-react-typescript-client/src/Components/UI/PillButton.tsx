@@ -5,9 +5,9 @@ interface PillButtonProps extends BoxProps {}
 export const PillButton: React.FC<PillButtonProps> = (props) => {
   return (
     <Button
-      px=".7rem"
-      py=".5rem"
-      rounded={"lg"}
+      px=".2rem"
+      py=".3rem"
+      rounded={"full"}
       textAlign={"center"}
       {...props}
     >

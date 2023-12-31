@@ -46,7 +46,7 @@ export type onboardUserPayload = {
 export type QuizType = {
   _id: string;
   name: string;
-  questions: string[];
+  questions: string[] | QuestionType[];
   numberOfQuestions: number;
   upvotes: number;
   downvotes: number;
@@ -55,4 +55,17 @@ export type QuizType = {
   created_at: Date;
   category: { name: string; _id: string };
   description: string;
+};
+
+export type choiceType = {
+  choiceText: string;
+  _id: string;
+};
+
+export type QuestionType = {
+  _id: string;
+  questionType: "radio" | "checkbox" | "text";
+  choices: [choiceType];
+  category?: string;
+  questionText: string;
 };

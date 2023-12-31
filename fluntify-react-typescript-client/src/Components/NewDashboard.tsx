@@ -30,7 +30,7 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
       {/* QUiz Card parent box */}
       <Grid
         gridTemplateColumns={{ sm: "repeat(1, 1fr)", lg: "repeat(3,1fr)" }}
-        gap={"4"}
+        gap="4"
       >
         {data.map((quiz) => (
           <QuizCard
@@ -38,6 +38,7 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
             numberOfQuestions={quiz.numberOfQuestions}
             quizCategory={quiz.category.name}
             quizDescription={quiz.description}
+            quizid={quiz._id}
           />
         ))}
         <QuizCard

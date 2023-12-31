@@ -1,17 +1,41 @@
 import React from "react";
 import RadioQuestion from "../RadioQuestion";
+import { QuestionType } from "../../shared/types";
+import { Box, Radio, RadioGroup, Text, VStack } from "@chakra-ui/react";
 
-export default function QuestionMaster(props) {
-  const questionObject = props.questionObject;
+interface QuestionMasterProps {
+  questionObject: QuestionType;
+  children: React.ReactNode;
+  onChange: (v: string) => void;
+}
+
+const QuestionMaster: React.FC<QuestionMasterProps> = ({
+  questionObject,
+  children,
+  onChange,
+}) => {
   const questionType = questionObject.questionType;
-  const questionText = questionObject.questionText;
+
   const choices = questionObject.choices;
 
-  console.log(choices);
-
   if (questionType === "radio") {
-    return <RadioQuestion questionText={questionText} choices={choices} />;
+    return (
+      <Box px={"1rem"} py="1rem">
+        <Text fontSize={"2rem"} fontWeight={"semibold"}>
+          {questionObject.questionText}
+        </Text>
+        <RadioGroup onChange={(v) => onChange(v)} my="1rem">
+          <VStack alignItems={"start"}>
+            {choices.map((choice) => {
+              return (
+                <Radio value={choice.choiceText}>{choice.choiceText}</Radio>
+              );
+            })}
+          </VStack>
+        </RadioGroup>
+      </Box>
+    );
   }
+};
 
-  return <div>QuestionMaster</div>;
-}
+export default QuestionMaster;

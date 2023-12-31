@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 
+type QuizStateType = "not initialized" | "started" | "submitting" | "submitted";
+
 export default function useQuiz(quizData) {
-  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
+  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(-1);
+  const [quizState, setQuizState] = useState<QuizStateType>("not initialized");
 
   const proceedToNextQuestion = () => {
     setCurrentQuestionIdx((prev) => prev + 1);
@@ -33,6 +36,11 @@ export default function useQuiz(quizData) {
     return isQuizFinished;
   };
 
+  const startQuiz = () => {
+    setCurrentQuestionIdx(0);
+    setQuizState("started");
+  };
+
   const currentQuestionObject = isQuizFinished
     ? null
     : quizData.questions[currentQuestionIdx];
@@ -44,5 +52,7 @@ export default function useQuiz(quizData) {
     isLastQuestion,
     currentQuestionObject,
     questions,
+    quizState,
+    startQuiz,
   };
 }

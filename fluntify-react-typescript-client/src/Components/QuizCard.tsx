@@ -5,6 +5,7 @@ import { BiUpvote, BiDownvote } from "react-icons/bi";
 
 import React from "react";
 import CustomButton from "./UI/CustomButton";
+import { useNavigate } from "react-router-dom";
 
 interface QuizCardProps extends BoxProps {
   quizName: string;
@@ -13,9 +14,11 @@ interface QuizCardProps extends BoxProps {
   quizDescription?: string;
   timeLimit?: string;
   imageURL?: string;
+  quizid?: string;
 }
 
 export const QuizCard: React.FC<QuizCardProps> = (props) => {
+  const navigate = useNavigate();
   console.log("background img: ", props.imageURL);
   return (
     <Box
@@ -33,7 +36,12 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
       {...props}
     >
       <Box display={"flex"} flexDir={"row"} justifyContent={"space-between"}>
-        <Text fontSize={"1.5rem"} fontWeight={"semibold"}>
+        <Text
+          fontSize={"1.5rem"}
+          fontWeight={"semibold"}
+          textOverflow={"clip"}
+          whiteSpace={"nowrap"}
+        >
           {props.quizName}
         </Text>
 
@@ -88,7 +96,9 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
         <BiDownvote fontSize="1.5rem" />
       </Box>
 
-      <CustomButton>Attempt</CustomButton>
+      <CustomButton onClick={() => navigate(`/quiz/${props.quizid}`)}>
+        Attempt
+      </CustomButton>
     </Box>
   );
 };
