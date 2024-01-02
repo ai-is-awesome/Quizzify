@@ -14,10 +14,9 @@ const quizSchema = mongoose.Schema({
   timeLimitInSeconds: { type: Number },
   isTimed: { type: Boolean, default: false },
   cardColor: { type: String },
+  areResultsPublic: { type: boolean },
 });
 
 const Quiz = mongoose.model("Quiz", quizSchema);
 
 export default Quiz;
-
-
