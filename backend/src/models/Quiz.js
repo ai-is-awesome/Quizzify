@@ -14,7 +14,7 @@ const quizSchema = mongoose.Schema({
   timeLimitInSeconds: { type: Number },
   isTimed: { type: Boolean, default: false },
   cardColor: { type: String },
-  areResultsPublic: { type: boolean },
+  areResultsPublic: { type: Boolean },
 });
 
 const Quiz = mongoose.model("Quiz", quizSchema);
