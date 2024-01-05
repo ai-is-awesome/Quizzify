@@ -1,15 +1,16 @@
 // import { createRequire } from "module";
 // const require = createRequire(import.meta.url);
-import admin, { app } from "firebase-admin";
-
+import admin from "firebase-admin";
+import "dotenv/config";
 import { applicationDefault } from "firebase-admin/app";
 
 export const initializeFirebase = () => {
-  console.log("Process env", process.env.GOOGLE_APPLICATION_CREDENTIALS);
+  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+  console.log("Service account ID : ", serviceAccount.project_id);
   const app = admin.initializeApp({
-    credential: applicationDefault(),
-    databaseURL: "taskflow-boards.firebaseapp.com",
+    credential: admin.credential.cert(serviceAccount),
   });
+
   return app;
 };
 
