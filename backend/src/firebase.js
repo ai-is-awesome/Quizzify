@@ -1,10 +1,11 @@
 // import { createRequire } from "module";
 // const require = createRequire(import.meta.url);
-import admin from "firebase-admin";
+import admin, { app } from "firebase-admin";
 
 import { applicationDefault } from "firebase-admin/app";
 
 export const initializeFirebase = () => {
+  console.log("Process env", process.env.GOOGLE_APPLICATION_CREDENTIALS);
   const app = admin.initializeApp({
     credential: applicationDefault(),
     databaseURL: "taskflow-boards.firebaseapp.com",
