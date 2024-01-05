@@ -1,8 +1,7 @@
 import axios from "axios";
 import { onboardUserPayload } from "./shared/types";
 
-export const DEPLOY_URL =
-  "https://fluentify-glxgws98i-ai-is-awesomes-projects.vercel.app/";
+export const DEPLOY_URL = "https://fluentify-pearl.vercel.app/";
 // export const LOCAL_SERVER_URL = "http://localhost:3001/";
 export const LOCAL_SERVER_URL = DEPLOY_URL;
 export const BASE_URL =
