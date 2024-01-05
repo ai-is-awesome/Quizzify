@@ -9,12 +9,15 @@ export const Sidebar: React.FC = (props) => {
   const isLoggedIn = authData.firebaseAuthState.isLoggedIn;
   return (
     <Box
-      bg={"gray.100"}
+      // bg={"gray.800"}
       minH={"100vh"}
       w={"15%"}
       display={"flex"}
       flexDir={"column"}
       gap={"2rem"}
+      background={"blue.700"}
+      color={"white"}
+      backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${props?.imageURL})`}
     >
       {/* Fluentify Box */}
       <Box justifyContent={"center"} display={"flex"}>

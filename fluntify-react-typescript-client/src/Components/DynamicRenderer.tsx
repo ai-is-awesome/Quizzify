@@ -54,7 +54,7 @@ export default function DynamicRenderer({
   if (sidebar) {
     return (
       <>
-        <Box display={"flex"}>
+        <Box display={"flex"} bg={"gray.800"}>
           {!isSmallScreen && sidebar && <Sidebar />}
           {children}
         </Box>

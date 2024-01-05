@@ -15,6 +15,7 @@ interface QuizCardProps extends BoxProps {
   timeLimit?: string;
   imageURL?: string;
   quizid?: string;
+  bgColor?: string;
 }
 
 export const QuizCard: React.FC<QuizCardProps> = (props) => {
@@ -29,6 +30,7 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
       flexDir={"column"}
       gap={"1rem"}
       backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${props?.imageURL})`}
+      background={"blue.700"}
       backgroundSize={"cover"}
       backgroundRepeat={"no-repeat"}
       backgroundPosition={"center"}
@@ -96,7 +98,12 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
         <BiDownvote fontSize="1.5rem" />
       </Box>
 
-      <CustomButton onClick={() => navigate(`/quiz/${props.quizid}`)}>
+      <CustomButton
+        onClick={() => navigate(`/quiz/${props.quizid}`)}
+        // position={"absolute"}
+        bottom={"10px"}
+        // w={"50%"}
+      >
         Attempt
       </CustomButton>
     </Box>
