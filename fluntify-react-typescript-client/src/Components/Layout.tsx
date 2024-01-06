@@ -12,16 +12,14 @@ const Layout: React.FC<LayoutProps> = (
   props = { children: <></>, centered: true }
 ) => {
   return (
-    <DynamicRenderer {...props}>
-      <Box
-        w={{ sm: "100%", lg: props.centered ? "70%" : "100%" }}
-        mx={"auto"}
-        my="4rem"
-        {...props}
-      >
-        {props.children}
-      </Box>
-    </DynamicRenderer>
+    <Box
+      w={{ sm: "100%", lg: props.centered ? "90%" : "100%" }}
+      mx={"auto"}
+      my="4rem"
+      {...props}
+    >
+      {props.children}
+    </Box>
   );
 };
 export default Layout;

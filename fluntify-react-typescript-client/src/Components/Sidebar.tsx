@@ -11,7 +11,7 @@ export const Sidebar: React.FC = (props) => {
     <Box
       // bg={"gray.800"}
       minH={"100vh"}
-      w={"15%"}
+      w={"25%"}
       display={"flex"}
       flexDir={"column"}
       gap={"2rem"}
