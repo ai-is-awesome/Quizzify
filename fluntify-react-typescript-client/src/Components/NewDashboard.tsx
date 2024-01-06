@@ -59,7 +59,7 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
 
   return (
     <>
-      <Layout sidebar={true} my="0" auth={false}>
+      <Layout sidebar={true} my="0" auth={false} centered={true}>
         {/* Button Container */}
         <Box
           display={"flex"}
@@ -71,7 +71,7 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
           bg="blue.700"
           boxShadow={"md"}
           backgroundImage={"linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5))"}
-          rounded={"lg"}
+          // rounded={"lg"}
         >
           {selectModeButtonsObect.map((btnObj, idx) => {
             return (
