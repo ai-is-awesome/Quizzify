@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import DynamicRenderer from "./DynamicRenderer";
-import { Box, Button, Grid } from "@chakra-ui/react";
+import { Box, Button, Grid, Text } from "@chakra-ui/react";
+import { IoIosCreate, IoIosKeypad } from "react-icons/io";
+import { RiPhoneFindLine } from "react-icons/ri";
 import { QuizCard } from "./QuizCard";
 import { getApp } from "firebase/app";
 import Layout from "./Layout";
@@ -13,6 +15,7 @@ interface NewDashboardProps {
 
 export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
   const [data, setData] = useState<QuizType[]>([]);
+  const [selectedButton, setSelectedButton] = useState(0);
 
   useEffect(() => {
     getAllQuizzes().then((res) => {
@@ -20,12 +23,66 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
     });
   }, []);
 
+  const selectModeButtonsObect = [
+    {
+      name: "Explore",
+      children: (
+        <>
+          <Box display={"flex"} alignItems={"center"} gap=".4rem">
+            <RiPhoneFindLine />
+            <Text>Explore</Text>
+          </Box>
+        </>
+      ),
+    },
+    {
+      name: "Create",
+      children: (
+        <Box display={"flex"} alignItems={"center"} gap=".2rem">
+          <IoIosCreate fontSize="1.2rem" />
+          <Text>Create</Text>
+        </Box>
+      ),
+    },
+    {
+      name: "Enter Code",
+      children: (
+        <>
+          <Box display={"flex"} alignItems={"center"} gap=".4rem">
+            <IoIosKeypad />
+            Enter Code
+          </Box>
+        </>
+      ),
+    },
+  ];
+
   return (
     <Layout sidebar={true} my="0" auth={false}>
       {/* Button Container */}
-      <Box display={"flex"} gap="1" mb={"16"} mt="2">
-        <Button flexGrow={"1"}>Explore</Button>
-        <Button flexGrow={"1"}>Create Quiz</Button>
+      <Box
+        display={"flex"}
+        justifyContent={"space-around"}
+        gap="1"
+        mb={"16"}
+        // mt="2"
+        p="4"
+        bg="blue.700"
+        backgroundImage={"linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5))"}
+        rounded={"lg"}
+      >
+        {selectModeButtonsObect.map((btnObj, idx) => {
+          return (
+            <Button
+              bg={selectedButton === idx ? "green.500" : "white"}
+              color={selectedButton === idx ? "white" : "black"}
+              transform={selectedButton === idx ? "scale(1.2)" : "scale(1)"}
+              onClick={() => setSelectedButton(idx)}
+            >
+              {btnObj.children}
+            </Button>
+          );
+        })}
       </Box>
       {/* QUiz Card parent box */}
       <Grid
