@@ -106,39 +106,52 @@ export default function QuizMaster(props) {
 
   if (quizState === "not initialized") {
     return (
-      <Layout sidebar={true}>
-        <QuizDescription quizData={quizData} onClick={() => startQuiz()} />
-      </Layout>
+      <DynamicRenderer sidebar={true}>
+        <Layout>
+          <QuizDescription quizData={quizData} onClick={() => startQuiz()} />
+        </Layout>
+      </DynamicRenderer>
     );
   } else if (quizState === "started") {
     return (
-      <Layout sidebar={true} mt="0">
-        <CustomBox minH="40vh" position="relative">
-          {questions.length !== 0 && (
-            <Box>
-              <Text fontWeight={"bold"} fontSize={"2rem"} mb="1rem">
-                {quizData.name}
-              </Text>
-              <Box my=".5rem">
-                <PillButton bg={"purple.600"} color="white">
-                  {quizData.category.name}
-                </PillButton>
+      <DynamicRenderer sidebar={true}>
+        <Layout centered={true} width={"50%"} mx="auto">
+          <Text color={"white"}>fewofjewf</Text>
+          <CustomBox minH="40vh" position="relative">
+            {questions.length !== 0 && (
+              <Box>
+                <Text fontWeight={"bold"} fontSize={"2rem"} mb="1rem">
+                  {quizData.name}
+                </Text>
+                <Box my=".5rem">
+                  <PillButton bg={"purple.600"} color="white">
+                    {quizData.category.name}
+                  </PillButton>
+                </Box>
+                <Box
+                  bg="blue.700"
+                  backgroundImage={
+                    "linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5))"
+                  }
+                  mt="2rem"
+                  // color="black"
+                  rounded="md"
+                >
+                  <QuestionMaster
+                    questionObject={questions[currentQuestionIdx]}
+                  />
+                </Box>
               </Box>
-              <Box bg="gray.50" mt="2rem">
-                <QuestionMaster
-                  questionObject={questions[currentQuestionIdx]}
-                />
-              </Box>
-            </Box>
-          )}
-          {!submit && btnJSX}
-          {submit && (
-            <Link color={"green.500"} href="/user">
-              Quiz Submitted click here to go to home
-            </Link>
-          )}
-        </CustomBox>
-      </Layout>
+            )}
+            {!submit && btnJSX}
+            {submit && (
+              <Link color={"green.500"} href="/user">
+                Quiz Submitted click here to go to home
+              </Link>
+            )}
+          </CustomBox>
+        </Layout>
+      </DynamicRenderer>
     );
   }
 }

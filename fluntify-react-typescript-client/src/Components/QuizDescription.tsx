@@ -16,10 +16,13 @@ export const QuizDescription: React.FC<QuizDescriptionProps> = ({
 }) => {
   return (
     <Box
-      bg="gray.100"
+      bg="blue.700"
+      backgroundImage={"linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5))"}
+      color="white"
       px="4"
       py="4"
       display={"flex"}
+      rounded={"md"}
       flexDir={"column"}
       width={"60%"}
       mx="auto"

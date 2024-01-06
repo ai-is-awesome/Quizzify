@@ -13,8 +13,8 @@ const Layout: React.FC<LayoutProps> = (
 ) => {
   return (
     <Box
-      w={{ sm: "100%", lg: props.centered ? "90%" : "100%" }}
-      mx={"auto"}
+      width={{ sm: "100%", lg: props.centered ? "90%" : "100%" }}
+      mx={props.centered ? "auto" : "0"}
       my="4rem"
       {...props}
     >
