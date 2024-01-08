@@ -1,4 +1,4 @@
-# Welcome to fluentify
+# Welcome to Quizzify
 
 Live Demo: https://fluentify.netlify.app
 
