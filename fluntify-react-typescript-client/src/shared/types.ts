@@ -4,6 +4,7 @@ type UserServerSuccessType = {
   isOnboarded?: boolean;
   loadingStatus: "success";
   authStatus: "logged-in" | "guest" | "logged-out";
+  data: { firebaseUID: string; isOnboarded: boolean; name: string };
   [other: string]: any;
 };
 

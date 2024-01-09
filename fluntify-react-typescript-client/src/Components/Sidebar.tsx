@@ -7,6 +7,10 @@ import CustomButton from "./UI/CustomButton";
 export const Sidebar: React.FC = (props) => {
   const authData = useContext(AuthContext);
   const isLoggedIn = authData.firebaseAuthState.isLoggedIn;
+  const userName =
+    authData.serverUserData.loadingStatus === "success"
+      ? authData.serverUserData.data.name
+      : "John Doe";
   return (
     <Box
       // bg={"gray.800"}
@@ -20,11 +24,11 @@ export const Sidebar: React.FC = (props) => {
       backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${props?.imageURL})`}
     >
       {/* Fluentify Box */}
-      <Box justifyContent={"center"} display={"flex"}>
+      <Box justifyContent={"center"} display={"flex"} ml="2" mt="2">
         <Link
-          fontSize={"3xl"}
-          letterSpacing={"tighter"}
-          fontWeight={"bold"}
+          fontSize={"2rem"}
+          letterSpacing={1}
+          // fontWeight={"bold"}
           textTransform={"uppercase"}
           href="/"
         >
@@ -36,7 +40,7 @@ export const Sidebar: React.FC = (props) => {
           <>
             <Text fontSize={"1.5rem"}>Welcome,</Text>
             <Text fontWeight={"bold"} fontSize={"1.5rem"}>
-              John Doe
+              {userName}
             </Text>
           </>
         ) : (

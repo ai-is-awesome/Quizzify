@@ -68,7 +68,8 @@ export default function AuthProvider({ children }) {
     ) {
       const accessToken =
         userData.firebaseAuthState.firebaseUserData?.accessToken;
-      getUserData(accessToken).then((resp) =>
+      getUserData(accessToken).then((resp) => {
+        console.log("setting server data : ", resp);
         setUserData({
           ...userData,
           serverUserData: {
@@ -76,8 +77,8 @@ export default function AuthProvider({ children }) {
             isOnboarded: resp.isOnboarded,
             loadingStatus: "success",
           },
-        })
-      );
+        });
+      });
     }
   }, [userData]);
 
