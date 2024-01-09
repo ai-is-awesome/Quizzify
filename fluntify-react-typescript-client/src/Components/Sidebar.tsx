@@ -8,9 +8,10 @@ export const Sidebar: React.FC = (props) => {
   const authData = useContext(AuthContext);
   const isLoggedIn = authData.firebaseAuthState.isLoggedIn;
   const userName =
-    authData.serverUserData.loadingStatus === "success"
+    authData.isUserOnboarded() === true
       ? authData.serverUserData.data.name
       : "John Doe";
+
   return (
     <Box
       // bg={"gray.800"}
