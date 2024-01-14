@@ -21,9 +21,18 @@ export default function DynamicRenderer({
   auth = false,
   loading = false,
 }: DynamicRendererProps) {
+  const isSmallScreen = useBreakpointValue({ base: true, lg: false, sm: true });
   const loadingJSX = (
-    <Box display={"flex"} justifyContent={"center"}>
-      <Spinner />
+    <Box display={"flex"} bg={"gray.800"}>
+      {!isSmallScreen && sidebar && <Sidebar />}
+      <Box
+        display={"flex"}
+        justifyContent={"center"}
+        w={"100%"}
+        alignItems={"center"}
+      >
+        <Spinner color="white" size={"xl"} />
+      </Box>
     </Box>
   );
 
@@ -31,7 +40,7 @@ export default function DynamicRenderer({
   const onBoarded: boolean = authContext?.isUserOnboarded();
   const isLoggedIn = authContext?.firebaseAuthState.isLoggedIn;
   const firebaseAuthStatus = authContext?.firebaseAuthState.status;
-  const isSmallScreen = useBreakpointValue({ base: true, lg: false, sm: true });
+
   const navigate = useNavigate();
 
   // const onBoarded: boolean = true;

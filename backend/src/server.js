@@ -199,6 +199,15 @@ app.post(
   }
 );
 
+app.post("/search_quiz", requireParams(["quizName"]), async (req, res) => {
+  const quizName = req.body.quizName;
+  const quizzes = await Quiz.find({
+    // write a regex to match the quiz name, quiz name should start with quizname paramter
+    name: { $regex: `^${quizName}`, $options: "i" },
+  });
+  return res.json(quizzes);
+});
+
 app.listen(3001, () => {
   console.log("Listening to 3001");
 });
