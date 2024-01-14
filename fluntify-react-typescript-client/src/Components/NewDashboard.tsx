@@ -8,6 +8,7 @@ import { getApp } from "firebase/app";
 import Layout from "./Layout";
 import { getAllQuizzes } from "../services";
 import { QuizType } from "../shared/types";
+import SearchForm from "./SearchForm";
 
 interface NewDashboardProps {
   children: React.ReactNode;
@@ -16,11 +17,17 @@ interface NewDashboardProps {
 export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
   const [data, setData] = useState<QuizType[]>([]);
   const [selectedButton, setSelectedButton] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getAllQuizzes().then((res) => {
-      setData(res.data);
-    });
+    setLoading(true);
+    getAllQuizzes()
+      .then((res) => {
+        setData(res.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const selectModeButtonsObect = [
@@ -59,7 +66,7 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
 
   return (
     <>
-      <DynamicRenderer sidebar={true}>
+      <DynamicRenderer sidebar={true} loading={loading}>
         <Box>
           <Layout my="0" auth={false} centered={false}>
             {/* Button Container */}
@@ -91,6 +98,11 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
                   </Button>
                 );
               })}
+            </Box>
+          </Layout>
+          <Layout centered={true}>
+            <Box color="white">
+              <SearchForm />
             </Box>
           </Layout>
           <Layout centered={true}>

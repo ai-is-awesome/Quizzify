@@ -6,6 +6,8 @@ import { BiUpvote, BiDownvote } from "react-icons/bi";
 import React from "react";
 import CustomButton from "./UI/CustomButton";
 import { useNavigate } from "react-router-dom";
+import { Upvote } from "./Upvote";
+import { DownVote } from "./Downvote";
 
 interface QuizCardProps extends BoxProps {
   quizName: string;
@@ -104,8 +106,8 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
           <Box display={"flex"} alignItems={"center"} gap={"1rem"}></Box>
           <Box display={"flex"} gap={".5rem"}>
             {/* <FaThumbsUp color="white" /> */}
-            <BiUpvote fontSize="1.5rem" />
-            <BiDownvote fontSize="1.5rem" />
+            <Upvote voted={false} />
+            <DownVote voted={false} />
           </Box>
         </Box>
         <CustomButton

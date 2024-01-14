@@ -11,6 +11,7 @@ export interface DynamicRendererProps {
   forceOnboard?: boolean;
   sidebar?: boolean;
   auth?: boolean;
+  loading?: boolean;
 }
 
 export default function DynamicRenderer({
@@ -18,13 +19,21 @@ export default function DynamicRenderer({
   // forceOnboard = false,
   sidebar,
   auth = false,
+  loading = false,
 }: DynamicRendererProps) {
+  const loadingJSX = (
+    <Box display={"flex"} justifyContent={"center"}>
+      <Spinner />
+    </Box>
+  );
+
   const authContext = useContext(AuthContext);
   const onBoarded: boolean = authContext?.isUserOnboarded();
   const isLoggedIn = authContext?.firebaseAuthState.isLoggedIn;
   const firebaseAuthStatus = authContext?.firebaseAuthState.status;
   const isSmallScreen = useBreakpointValue({ base: true, lg: false, sm: true });
   const navigate = useNavigate();
+
   // const onBoarded: boolean = true;
 
   // If the firebase has loaded and the consumer is expecting an authenticated user then redirect, otherwise render children
@@ -36,15 +45,13 @@ export default function DynamicRenderer({
     navigate("/landing");
   }
 
+  // Loading state
   if (
     authContext?.firebaseAuthState.status === "loading" ||
-    authContext?.serverUserData.loadingStatus === "loading"
+    authContext?.serverUserData.loadingStatus === "loading" ||
+    loading
   ) {
-    return (
-      <Box display={"flex"} justifyContent={"center"}>
-        <Spinner />
-      </Box>
-    );
+    return loadingJSX;
   }
 
   if (auth && !onBoarded) {
