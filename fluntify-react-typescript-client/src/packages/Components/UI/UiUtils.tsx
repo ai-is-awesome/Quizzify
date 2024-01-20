@@ -1,5 +1,5 @@
 import { Box, Text, chakra } from "@chakra-ui/react";
-import { getThemeObject } from "../../../theme";
+import { getThemeObject } from "../../../../theme";
 
 export const LandingPageFeatureUI = ({ featureTitle, desc }) => {
   const themeObj = getThemeObject("white");

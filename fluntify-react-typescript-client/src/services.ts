@@ -2,8 +2,8 @@ import axios from "axios";
 import { onboardUserPayload } from "./shared/types";
 
 export const DEPLOY_URL = "https://fluentify-pearl.vercel.app/";
-// export const LOCAL_SERVER_URL = "http://localhost:3001/";
-export const LOCAL_SERVER_URL = DEPLOY_URL;
+export const LOCAL_SERVER_URL = "http://localhost:3001/";
+// export const LOCAL_SERVER_URL = DEPLOY_URL;
 export const BASE_URL =
   import.meta.env.VITE_DEV_MODE === "local" ? LOCAL_SERVER_URL : DEPLOY_URL;
 
@@ -37,5 +37,12 @@ export const onboardUserService: (payload: onboardUserPayload) => void = async (
 
 export const getAllQuizzes = async () => {
   const data = await axios.get(BASE_URL + "get_all_quiz");
+  return data;
+};
+
+export const searchQuiz = async (searchQuery: string) => {
+  const data = await axios.post(BASE_URL + "search_quiz", {
+    quizName: searchQuery,
+  });
   return data;
 };

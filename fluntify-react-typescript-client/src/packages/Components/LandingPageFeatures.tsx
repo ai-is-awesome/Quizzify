@@ -1,8 +1,8 @@
 import { Box, Center, Grid, Heading, Image, Img, Text } from "@chakra-ui/react";
 import React from "react";
-import { getThemeObject } from "../../theme";
-import translate2 from "../assets/images/translate2.png";
-import lp from "../assets/images/lp.png";
+import { getThemeObject } from "../../../theme";
+import translate2 from "../../assets/images/translate2.png";
+import lp from "../../assets/images/lp.png";
 import Footer from "./Footer";
 import { motion } from "framer-motion";
 

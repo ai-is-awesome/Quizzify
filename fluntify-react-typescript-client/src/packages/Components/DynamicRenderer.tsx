@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { AuthContext } from "../useAuth";
-import { getUserData } from "../services";
+import { AuthContext } from "../../useAuth";
+import { getUserData } from "../../services";
 import OnBoardForm from "./OnboardForm";
 import { useNavigate } from "react-router-dom";
 import { Box, Spinner, useBreakpointValue } from "@chakra-ui/react";

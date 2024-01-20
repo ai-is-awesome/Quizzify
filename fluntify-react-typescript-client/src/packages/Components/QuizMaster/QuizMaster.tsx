@@ -17,7 +17,7 @@ import RadioInput from "../Radio/RadioInput";
 import { useParams } from "react-router-dom";
 import { getQuizById } from "../../services";
 import QuestionMaster from "../QuestionMaster/QuestionMaster";
-import useQuiz from "../../hooks/useQuiz";
+import useQuiz from "../../../hooks/useQuiz";
 import DynamicRenderer from "../DynamicRenderer";
 import { QuizType } from "../../shared/types";
 import CustomButton from "../UI/CustomButton";

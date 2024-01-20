@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Container from "./Container";
-import { AuthContext } from "../useAuth";
+import { AuthContext } from "../../useAuth";
 import { Box, Button, Heading } from "@chakra-ui/react";
 import DynamicRenderer from "./DynamicRenderer";
 import CustomButton from "./UI/CustomButton";

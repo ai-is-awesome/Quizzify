@@ -1,9 +1,13 @@
 import { Box, Button } from "@chakra-ui/react";
 import TextInput from "./FormComponents/TextInput/TextInput";
 import { useState } from "react";
+import { searchQueryAtom } from "../../packages/recoil/atoms/quizListAtom";
+import { useRecoilState } from "recoil";
 
 export default function SearchForm() {
   const [search, setSearch] = useState<string>("");
+  const [searchAtom, setSearchAtom] = useRecoilState(searchQueryAtom);
+
   return (
     <Box
       bg="blue.700"
@@ -22,7 +26,12 @@ export default function SearchForm() {
           rounded={"md"}
         />
         <Box display={"flex"} justifyContent={"center"}>
-          <Button bg={"green.500"} color={"white"} maxW={"fit-content"}>
+          <Button
+            bg={"green.500"}
+            color={"white"}
+            maxW={"fit-content"}
+            onClick={() => setSearchAtom(search)}
+          >
             Search
           </Button>
         </Box>

@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import { getThemeObject } from "../../theme";
+import { getThemeObject } from "../../../theme";
 
 export default function Footer() {
   const themeObj = getThemeObject("white");

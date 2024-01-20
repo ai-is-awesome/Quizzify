@@ -2,9 +2,9 @@ import { Box, FormControl, FormLabel, Heading, Input } from "@chakra-ui/react";
 
 import { FormEvent, useContext, useState } from "react";
 import Button from "./UI/CustomButton";
-import useRequest from "../hooks/useRequest";
-import { onboardUserService } from "../services";
-import { AuthContext } from "../useAuth";
+import useRequest from "../../hooks/useRequest";
+import { onboardUserService } from "../../services";
+import { AuthContext } from "../../useAuth";
 import { useNavigate } from "react-router-dom";
 
 const OnBoardForm: React.FC = () => {

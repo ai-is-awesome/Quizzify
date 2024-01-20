@@ -1,7 +1,7 @@
 import { Box, Link, Text } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { PillButton } from "./UI/PillButton";
-import { AuthContext } from "../useAuth";
+import { AuthContext } from "../../useAuth";
 import CustomButton from "./UI/CustomButton";
 
 export const Sidebar: React.FC = (props) => {

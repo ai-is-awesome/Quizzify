@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { AuthContext } from "../useAuth";
+import { AuthContext } from "../../useAuth";
 import {
   Box,
   Button,
@@ -11,7 +11,7 @@ import {
   Img,
   Text,
 } from "@chakra-ui/react";
-import myTheme, { getThemeObject } from "../../theme";
+import myTheme, { getThemeObject } from "../../../theme";
 import { LandingPageFeatureUI, LandingPageWrapper } from "./UI/UiUtils";
 import translate2 from "../assets/images/translate2.png";
 import lp from "../assets/images/lp.png";

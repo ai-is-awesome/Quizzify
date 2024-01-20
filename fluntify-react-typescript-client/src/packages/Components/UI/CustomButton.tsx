@@ -4,7 +4,7 @@ import {
   Spinner,
   ButtonProps as ChakraButtonProps,
 } from "@chakra-ui/react";
-import myTheme from "../../../theme";
+import myTheme from "../../../../theme";
 
 interface CustomButtonProps extends ChakraButtonProps {
   variant?: "primary" | "secondary" | "tertiary";
