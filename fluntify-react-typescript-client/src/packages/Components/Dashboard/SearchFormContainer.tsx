@@ -1,14 +1,16 @@
 import React from "react";
 import Layout from "../Layout";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, BoxProps } from "@chakra-ui/react";
 import SearchForm from "../SearchForm";
 import { useRecoilState } from "recoil";
 import { searchQueryAtom } from "../../recoil/atoms/quizListAtom";
 
-export const SearchFormContainer = () => {
+interface SearchFormContainerProps extends BoxProps {}
+
+export const SearchFormContainer = (props: SearchFormContainerProps) => {
   const [searchAtom, setSearchAtom] = useRecoilState(searchQueryAtom);
   return (
-    <Layout centered={true}>
+    <Layout centered={true} {...props} my="0">
       <Box color="white">
         <SearchForm />
       </Box>

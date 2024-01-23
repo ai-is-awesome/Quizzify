@@ -1,5 +1,5 @@
 import { atom, selector } from "recoil";
-import { getAllQuizzes, searchQuiz } from "../../../services";
+import { getAllQuizzes, searchQuiz } from "../../../packages/api/services";
 
 // "idle","loading","success","error"
 export const quizzesAtom = atom({
@@ -17,9 +17,13 @@ export const quizSelector = selector({
   get: async ({ get }) => {
     const query = get(searchQueryAtom);
     if (query === "") {
-      return getAllQuizzes().then((res) => {
-        return res.data;
-      });
+      return getAllQuizzes()
+        .then((res) => {
+          return res.data;
+        })
+        .catch((e) => {
+          console.log("Axios error", e);
+        });
     } else {
       return searchQuiz(query).then((res) => {
         return res.data;

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { AuthContext } from "../useAuth";
+import { AuthContext } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 function useAuthRedirect(auth_login_state = false, redirect_to = "/landing") {

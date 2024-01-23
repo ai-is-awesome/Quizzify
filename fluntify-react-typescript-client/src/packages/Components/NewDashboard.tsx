@@ -6,7 +6,7 @@ import { RiPhoneFindLine } from "react-icons/ri";
 import { QuizCard } from "./QuizCard";
 import { getApp } from "firebase/app";
 import Layout from "./Layout";
-import { getAllQuizzes } from "../../services";
+import { getAllQuizzes } from "../../packages/api/services";
 import { QuizType } from "../shared/types";
 import SearchForm from "./SearchForm";
 import {
@@ -17,6 +17,7 @@ import {
 import { useRecoilState, useRecoilValue } from "recoil";
 import { TopBar } from "./Dashboard/TopBar";
 import { SearchFormContainer } from "./Dashboard/SearchFormContainer";
+import { Select } from "./UI/Select";
 
 interface NewDashboardProps {
   children?: React.ReactNode;
@@ -54,8 +55,11 @@ export const NewDashboard: React.FC<NewDashboardProps> = (props) => {
       <DynamicRenderer sidebar={true} loading={loading}>
         <Box>
           <TopBar />
-          <SearchFormContainer />
-          <Layout centered={true}>
+          <SearchFormContainer my="0" />
+          <Layout centered={true} mb="4">
+            <Select />
+          </Layout>
+          <Layout centered={true} my="0">
             {/* QUiz Card parent box */}
             {loading ? (
               loadingJSX

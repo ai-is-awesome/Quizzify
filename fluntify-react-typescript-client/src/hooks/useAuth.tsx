@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, createContext } from "react";
-import { auth } from "../firebase";
+import { auth } from "../packages/api/firebase";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
@@ -11,7 +11,7 @@ import {
   UserObjectType,
   useAuthDataType,
 } from "./shared/types";
-import { getUserData } from "./services";
+import { getUserData } from "../packages/api/services";
 
 export const AuthContext = createContext<useAuthDataType | undefined>(
   undefined

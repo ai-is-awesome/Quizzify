@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { AuthContext } from "../../useAuth";
+import { AuthContext } from "../../hooks/useAuth";
 import { getUserData } from "../../services";
 import OnBoardForm from "./OnboardForm";
 import { useNavigate } from "react-router-dom";

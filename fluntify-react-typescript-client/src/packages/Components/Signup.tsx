@@ -15,7 +15,7 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import TextOnImage from "./TextOnImage";
 import myTheme from "../../../theme";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../useAuth";
+import { AuthContext } from "../../hooks/useAuth";
 import useAuthRedirect from "../../hooks/useAuthRedirect";
 
 export default function Signup() {

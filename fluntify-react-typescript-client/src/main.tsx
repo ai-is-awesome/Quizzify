@@ -10,7 +10,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import CardMatch from "./Components/CardMatch/CardMatch.jsx";
 
 import Signup from "./packages/Components/Signup.jsx";
-import AuthProvider from "./useAuth.jsx";
+import AuthProvider from "./hooks/useAuth.tsx";
+
 import LandingPage from "./packages/Components/LandingPage.jsx";
 import Debug from "./packages/Components/Debug.jsx";
 import QuizMaster from "./packages/Components/QuizMaster/QuizMaster.js";

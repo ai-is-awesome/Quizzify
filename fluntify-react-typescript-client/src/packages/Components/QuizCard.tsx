@@ -27,7 +27,7 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
     <Box
       bg={"gray.100"}
       rounded={"md"}
-      backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${props?.imageURL})`}
+      backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,.5))`}
       background={"blue.700"}
       backgroundSize={"cover"}
       backgroundRepeat={"no-repeat"}

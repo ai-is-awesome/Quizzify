@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { AuthContext } from "../../useAuth";
+import { AuthContext } from "../../hooks/useAuth";
 import {
   Box,
   Button,
