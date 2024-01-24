@@ -34,6 +34,7 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
       backgroundPosition={"center"}
       color={"white"}
       {...props}
+      maxW={{ sm: "100%" }}
     >
       <Box
         display={"flex"}
@@ -45,11 +46,14 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
         height={"100%"}
       >
         <Box display={"flex"} flexDir={"column"} gap={"1rem"}>
+          {/* Container for quiz name and time */}
           <Box
             display={"flex"}
-            flexDir={"row"}
+            flexDir={{ sm: "column", base: "row", md: "row" }}
             justifyContent={"space-between"}
+            // overflowX={"auto"}
           >
+            {/* Quiz Name */}
             <Text
               fontSize={"1.5rem"}
               fontWeight={"semibold"}
@@ -58,10 +62,10 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
             >
               {props.quizName}
             </Text>
-
+            {/* Timer icon and seconds */}
             <Box
               display={"flex"}
-              justifyContent={"center"}
+              justifyContent={{ sm: "left", lg: "center" }}
               alignItems={"center"}
               gap={".5rem"}
             >
@@ -112,9 +116,7 @@ export const QuizCard: React.FC<QuizCardProps> = (props) => {
         </Box>
         <CustomButton
           onClick={() => navigate(`/quiz/${props.quizid}`)}
-          // position={"absolute"}
           bottom={"10px"}
-          // w={"50%"}
         >
           Attempt
         </CustomButton>
