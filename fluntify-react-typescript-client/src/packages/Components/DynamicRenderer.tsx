@@ -77,6 +77,10 @@ export default function DynamicRenderer({
       </>
     );
   } else {
-    return <>{children}</>;
+    return (
+      <Box bg={"gray.800"} minH={"100vh"} color={"white"}>
+        {children}
+      </Box>
+    );
   }
 }
