@@ -70,6 +70,7 @@ app.post(
     // Validation
     const quizManager = new QuizManager();
     const user = await User.findOne({ firebaseUID: req.firebaseUID });
+
     try {
       const resp = await quizManager.create_quiz(req.body, user);
       return res.json(resp);
@@ -85,10 +86,6 @@ app.post("/get_random_word_of_the_day", async (req, res) => {
 
   const word = await Word.findOne().skip(random);
   return res.json(word);
-});
-
-app.post("/submit_quiz", async (req, res) => {
-  return res.json({});
 });
 
 app.post("/translate", async (req, res) => {
@@ -202,11 +199,36 @@ app.post(
 app.post("/search_quiz", requireParams(["quizName"]), async (req, res) => {
   const quizName = req.body.quizName;
   const quizzes = await Quiz.find({
-    // write a regex to match the quiz name, quiz name should start with quizname paramter
+    //  a regex to match the quiz name if it starts with the quiz name
     name: { $regex: `^${quizName}`, $options: "i" },
   });
   return res.json(quizzes);
 });
+
+// payload for submitting quiz
+// {quizId : "abc", responsesPayload: [{questionId : "", selectedChoicesId : [{id : "FF"}]  }  ] }
+
+app.post(
+  "/submit_quiz",
+  verify_token(),
+  requireParams(["quizPayload"]),
+  async (req, res, next) => {
+    const quizManager = new QuizManager();
+    try {
+      await quizManager.submitQuiz(req.body.quizPayload);
+    } catch (e) {
+      next(e);
+      return;
+    }
+    return res.json({ msg: "Hello from feb 6" });
+  }
+);
+
+app.use(errorHandler);
+
+function errorHandler(e, req, res, next) {
+  return res.status(400).json({ error: e.message });
+}
 
 app.listen(3001, () => {
   console.log("Listening to 3001");

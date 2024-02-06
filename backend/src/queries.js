@@ -17,9 +17,34 @@ class QuizManager {
     return Quiz.find(query).select(select);
   }
 
+  async getQuizById(quizId, selectQuery) {
+    try {
+      const quiz = await Quiz.findById(quizId).select(selectQuery);
+      return quiz;
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  }
+
+  async submitQuiz(quizPayload) {
+    try {
+      this.verifyQuizPayload(quizPayload);
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  verifyQuizPayload(quizPayload) {
+    if (!quizPayload) {
+      throw new Error("No Quiz payload found");
+    }
+    if (!quizPayload.quizId) {
+      throw new Error("No Quiz Id found");
+    }
+  }
+
   async create_quiz(quizData, userData) {
     const userObjectId = new mongoose.Types.ObjectId(userData._id);
-
     const names = await Quiz.find({
       created_by: userObjectId,
     }).select("name");
